@@ -11,7 +11,8 @@ AI Agents: Building single/multi-agent and multi-modal workflows using LLM, RAG,
 - Project Manager’s Daily Highlights — Multi-agent workflow aggregating Slack, email, and calendar (n8n): [Open](https://github.com/sparolkar/Agentic-AI-Portfolio/blob/main/Project%20Manager%E2%80%99s%20Daily%20Highlights.json)
 - Project Status Chatbot — Slack-integrated chatbot over project documents using multi-agent workflow (n8n): [Open](https://github.com/sparolkar/Agentic-AI-Portfolio/blob/main/Slack%20Project%20Status%20Chatbot.json)
 - Project Health Monitor — Voice/text input multi-agent workflow (ElevenLabs): [Open](https://github.com/sparolkar/Agentic-AI-Portfolio/blob/main/Product%20Health%20Monitor.json)
-- Feature Prioritization — Multi-agent workflow (Langflow)
+- Feature Prioritization — Multi-agent workflow (Langflow): [Open](https://github.com/sparolkar/Agentic-AI-Portfolio/blob/main/Feature%20Prioritization.json)
+- Product Feature Launch  — Multi-agent workflow (Langflow): [Open](https://github.com/sparolkar/Agentic-AI-Portfolio/blob/main/Product%20Feature%20Launch.json)
 - LLM Evaluation & Fine-Tuning — Evaluation pipeline using Langfuse and LLM-as-a-judge methodology
 - Calendar Mate — Daily Briefing, Smart Scheduling, and Email Summarization (n8n)
 - Sales Genie — Lead Qualification, Product Recommendations, and Weekly Sales Insights (n8n)

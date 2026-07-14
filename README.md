@@ -7,7 +7,7 @@ AI Agents: Building single/multi-agent and multi-modal workflows using LLM, RAG,
 - Incident Management — Triages and assigns incidents to specific teams (Zapier): [Open](https://agents.zapier.com/copy/948885be-9b6f-462c-b9d1-8783f490e535)
 - Product Launch Readiness — Synthesizes inputs from engineering, legal, and marketing (Zapier): [Open](https://agents.zapier.com/copy/b2296799-8cb4-40ec-bb5a-75353f97d620)
 - Checkout Incident Detection — Rule-based detection and alerting (Zapier): [Open](https://agents.zapier.com/copy/456466b8-678b-4e86-864e-c31dfdaba969)
-- Product Finance Reporting — RAG-powered financial reporting (n8n): https://github.com/sparolkar/Agentic-AI-Portfolio/tree/main/Product%20Finance
+- Product Finance Reporting — RAG-powered financial reporting (n8n): [Open]https://github.com/sparolkar/Agentic-AI-Portfolio/tree/main/Product%20Finance
 - Project Manager’s Daily Highlights — Multi-agent workflow aggregating Slack, email, and calendar (n8n)
 - Project Status Chatbot — Slack-integrated chatbot over project documents using multi-agent workflow (n8n)
 - Project Health Monitor — Voice/text input multi-agent workflow (ElevenLabs)

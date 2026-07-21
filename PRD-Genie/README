@@ -1,0 +1,91 @@
+# PRD Genie — AI-Powered Product Documentation Assistant
+
+Capstone project · Applied Agentic AI for PMs/TPMs · **Shailendra Parolkar**
+
+PRD Genie turns meeting transcripts, product briefs, and stakeholder notes into a structured PRD, epics and user stories, and the clarification questions the meeting left open — and refuses to generate a PRD when the input doesn't support one.
+
+Built in n8n Cloud with four agents in a sequential pipeline, traced in Langfuse.
+
+## The problem
+
+PMs at NeuronForge spend 60–90 minutes converting each meeting into a PRD, every author formats differently, and requirements get lost between the conversation and the document. The risk that shaped this build: a PRD containing a requirement nobody stated is worse than no PRD, because engineering builds to it before anyone notices.
+
+Six of the twelve baseline tests grade the system on *correctly refusing*. Groundedness is the design, not a feature of it.
+
+## Architecture
+
+```
+Chat input
+   ▼
+Agent 1 · Requirement Extractor      gpt-4o-mini · stated / ambiguous / contradictions
+   ▼
+Parse + Validate                     Guardrail A — quote-or-drop, enforced in code
+   ├──────────────────────────────►  Agent 4 · Gap Analyzer   gpt-4o-mini (parallel)
+   ▼
+Sufficiency Gate                     Guardrail B — halts when stated_count == 0
+   ├── false ──► "No requirements extractable" + questions
+   └── true  ──► Agent 2 · PRD Generator   gpt-4o (extraction JSON only, never the transcript)
+                     ▼
+                 Agent 3 · Story Breakdown  gpt-4o
+                     ▼
+              Merge → Langfuse → Chat response (PRD · Stories · Questions)
+```
+
+**Orchestration pattern: sequential pipeline.** Every input is the same kind of object and passes through the same fixed stages, with strict data dependencies — the PRD Generator cannot run before requirements exist. A router would classify a route already known at design time; a hierarchical planner would decompose a workflow whose decomposition is fixed. Full justification in the [architecture writeup](11-Q3-architecture-writeup.md).
+
+### The two guardrails
+
+**Quote-or-drop.** Every extracted requirement must carry a verbatim quote from the input. The Parse + Validate node deletes any that don't, in code, before they reach the generator — a guardrail the model can't talk its way past.
+
+**Sufficiency gate.** When zero stated requirements are extracted, the pipeline halts and returns clarification questions. Test T9 ("Meeting happened. Notes: none.") passes by construction: the PRD Generator isn't asked to decline, it's never invoked.
+
+The PRD template's **Source column** carries a requirement ID for every functional requirement, each resolving to a verbatim quote — so fabrication is inspectable rather than a matter of judgment.
+
+## Repository contents
+
+| File | What it is |
+|---|---|
+| `08-prd-genie-workflow-chat-langfuse.json` | **The workflow.** Import into n8n. |
+| `01-design-steps-1-to-3.md` | Design rationale, agent specs, Mermaid architecture diagram |
+| `02-agent-prompts.md` | All four system prompts with the reasoning behind each guardrail |
+| `03-baseline-test-log.xlsx` | Baseline dataset results, T1–T12 |
+| `05-setup-and-observability.md` | Import and setup notes |
+| `07-langfuse-integration.md` | Langfuse integration, both paths |
+| `09-Q1-ideation.md` · `10-Q2-program-charter.md` · `11-Q3-architecture-writeup.md` · `12-Q4-reflection.md` | Assignment answers |
+| `screenshots/` | Canvas, system in action, Langfuse traces |
+
+## Setup
+
+1. **Import** `08-prd-genie-workflow-chat-langfuse.json` into n8n.
+2. **OpenAI credential** — add it to all four `OpenAI ...` model nodes. Requires access to `gpt-4o-mini` and `gpt-4o`.
+3. **Langfuse credential** — on the `Send to Langfuse` node, create a **Basic Auth** credential: username = Langfuse public key, password = secret key. Check the URL region (`us.cloud.langfuse.com` vs `cloud.langfuse.com`).
+4. **Open the chat** and paste a transcript.
+
+> Credentials live in n8n's credential store and are **not** included in the exported workflow JSON. Don't hardcode keys into the file — this repository is public.
+
+## Usage
+
+Paste any transcript, brief, or notes into the chat. Prefix with a test ID to tag the run in Langfuse:
+
+```
+T1: The user should be able to filter reports by date range, category, and status.
+Results must load in under 2 seconds. PM: Sarah. Deadline: Q3.
+```
+
+The reply contains three sections: **1. Product Requirements Document**, **2. Epics and User Stories**, **3. Clarification Questions**, under a header showing stated / ambiguous / contradiction counts.
+
+On an input with no extractable requirements, sections 1 and 2 explain why they're empty and section 3 still returns real questions — the Gap Analyzer runs in parallel and doesn't depend on the gate.
+
+## Evaluation
+
+Baseline dataset: 12 inputs from the problem statement, spanning detailed, vague, contradictory, incomplete, multi-stakeholder, technical, persona-heavy, empty, and dependency cases. Results in `03-baseline-test-log.xlsx`.
+
+**Production metrics:** extraction completeness · hallucination rate · format compliance. Completeness and hallucination are always reported together — suppressing output is the cheapest way to fake a hallucination improvement.
+
+## Cost
+
+$0.0297 per completed run · **$3.56 per PM per month** at 4 runs/day. Mixed-model design (cheap extraction, strong generation) saves 33% against all-gpt-4o. A halted run costs $0.0005 — 58× less — because the sufficiency gate declines to spend gpt-4o tokens on inputs that can't support a PRD. Full breakdown in the [architecture writeup](11-Q3-architecture-writeup.md#6-cost-analysis).
+
+## Tech stack
+
+n8n Cloud · OpenAI gpt-4o and gpt-4o-mini · Langfuse (ingestion API) · Markdown output

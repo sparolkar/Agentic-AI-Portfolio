@@ -1,0 +1,1768 @@
+id,traceId,traceName,type,name,startTime,endTime,completionStartTime,environment,version,userId,sessionId,level,statusMessage,promptName,promptId,promptVersion,modelId,providedModelName,modelParameters,usageDetails,costDetails,totalCost,input,output,metadata,latencyMs,timeToFirstTokenMs,tags,release,parentObservationId,comments,Correctness,Hallucination,Relevance
+5b5c0199-9dfe-4c26-bf22-5e5754369a2c,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,GENERATION,Agent 3 · Story Breakdown,52:09.4,52:10.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""354"",""output"":""92"",""total"":""446""}","{""input"":0.000885,""output"":0.00092,""total"":0.001805}",0.001805,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | Performance | Not stated |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency                  | Owner   | Status  | Risk    |
+|-----------------------------|---------|---------|---------|
+| Extraction output from T1   | UNKNOWN | UNKNOWN | UNKNOWN |
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+
+- What specific categories can reports be filtered by?
+- What statuses are available for filtering?
+- What are the success metrics for this feature?
+
+## 10. Timeline
+
+- Deadline for the project: Q3.","```markdown
+## Epic 1: Report Filtering
+
+### Feature 1.1: Filter Reports
+- **US-001** As a user, I want to filter reports by date range, category, and status, so that I can view specific subsets of data.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] The user should be able to filter reports by date range, category, and status.
+```","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-2eefc543-020b-4bd5-b29f-032147f97eda,[],[0.8],[0.1],[1]
+0d9281e4-1f9f-439c-ade1-10d0c88ff28c,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,52:07.4,52:08.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""110"",""output"":""523"",""total"":""633""}","{""input"":0.0000165,""output"":0.0003138,""total"":0.0003303}",0.0003303,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[""What specific categories can reports be filtered by?"",""What statuses are available for filtering?"",""What are the success metrics for this feature?""],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}]}","## Blocking Questions
+1. **Success Metrics** - What are the success metrics for this feature? *(Ask: Sarah)*
+   - Why this matters: Understanding success metrics is crucial for measuring the effectiveness of the feature post-launch.
+   - What was said: ""What are the success metrics for this feature?""
+
+## Clarifying Questions
+1. **User Personas** - What user personas are we targeting with this feature? *(Ask: unassigned)*
+   - Why this matters: Defining user personas helps tailor the feature to meet the needs of specific user groups.
+   - What was said: ""User personas were not discussed.""
+
+2. **Business Goal** - What is the primary business goal we aim to achieve with this feature? *(Ask: unassigned)*
+   - Why this matters: Clarifying the business goal ensures alignment with overall company objectives.
+   - What was said: ""The business goal was not discussed.""
+
+3. **Out of Scope** - What elements are considered out of scope for this feature? *(Ask: unassigned)*
+   - Why this matters: Defining out-of-scope elements helps prevent scope creep during development.
+   - What was said: ""Out of scope was not discussed.""
+
+4. **Assumptions** - What assumptions are we making regarding this feature? *(Ask: unassigned)*
+   - Why this matters: Identifying assumptions can help mitigate risks and clarify expectations.
+   - What was said: ""Assumptions were not discussed.""
+
+5. **Non-Functional Requirements** - What are the non-functional requirements for this feature? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are essential for ensuring performance, security, and usability standards are met.
+   - What was said: ""Non-functional requirements were not discussed.""
+
+6. **Acceptance Criteria** - What are the acceptance criteria for this feature? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are necessary to determine when the feature is complete and meets stakeholder expectations.
+   - What was said: ""Acceptance criteria were not discussed.""
+
+## Unresolved Conflicts
+- There are no unresolved conflicts identified in the extraction.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-2eefc543-020b-4bd5-b29f-032147f97eda,[],[0.2],[0.1],[1]
+aed103d2-7f0f-438e-936c-2379ee5bb0fd,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,GENERATION,Agent 2 · PRD Generator,52:07.4,52:08.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""305"",""output"":""354"",""total"":""659""}","{""input"":0.0007625,""output"":0.00354,""total"":0.0043025}",0.0043025,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The user should be able to filter reports by date range, category, and status."",""type"":""FUNCTIONAL"",""quote"":""The user should be able to filter reports by date range, category, and status."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Results must load in under 2 seconds."",""type"":""NON_FUNCTIONAL"",""quote"":""Results must load in under 2 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}],""personas"":[],""constraints"":[{""constraint"":""Deadline for the project."",""quote"":""Deadline: Q3."",""category"":""TIMELINE""}],""dependencies"":[{""item"":""Extraction output from T1"",""owner"":""UNKNOWN"",""eta"":""UNKNOWN"",""quote"":""Use the extraction output from T1 to generate a full PRD.""}],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[""What specific categories can reports be filtered by?"",""What statuses are available for filtering?"",""What are the success metrics for this feature?""]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | Performance | Not stated |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency                  | Owner   | Status  | Risk    |
+|-----------------------------|---------|---------|---------|
+| Extraction output from T1   | UNKNOWN | UNKNOWN | UNKNOWN |
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+
+- What specific categories can reports be filtered by?
+- What statuses are available for filtering?
+- What are the success metrics for this feature?
+
+## 10. Timeline
+
+- Deadline for the project: Q3.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-2eefc543-020b-4bd5-b29f-032147f97eda,[],[0.7],[0.2],[0.7]
+0595a8bb-02e6-4e81-9957-ee13a88fd9b1,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,SPAN,Guardrail · sufficiency gate,52:06.7,52:06.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 2 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":2}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-2eefc543-020b-4bd5-b29f-032147f97eda,[],[0.5],[0],[1]
+d698c79f-9ecc-4d60-b24b-624678569965,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,SPAN,Guardrail · quote validation,52:06.6,52:06.6,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":2}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-2eefc543-020b-4bd5-b29f-032147f97eda,[],[0.7],[0.8],[1]
+1015c55f-153d-4c97-a011-2024096c4a59,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,52:05.4,52:06.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""60"",""output"":""305"",""total"":""365""}","{""input"":0.000009,""output"":0.000183,""total"":0.000192}",0.000192,"The user should be able to filter reports by date range, category, and status. Results must load in under 2 seconds. PM: Sarah. Deadline: Q3. Use the extraction output from T1 to generate a full PRD. Use the PRD to generate user stories.","{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The user should be able to filter reports by date range, category, and status."",""type"":""FUNCTIONAL"",""quote"":""The user should be able to filter reports by date range, category, and status."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Results must load in under 2 seconds."",""type"":""NON_FUNCTIONAL"",""quote"":""Results must load in under 2 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}],""personas"":[],""constraints"":[{""constraint"":""Deadline for the project."",""quote"":""Deadline: Q3."",""category"":""TIMELINE""}],""dependencies"":[{""item"":""Extraction output from T1"",""owner"":""UNKNOWN"",""eta"":""UNKNOWN"",""quote"":""Use the extraction output from T1 to generate a full PRD.""}],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[""What specific categories can reports be filtered by?"",""What statuses are available for filtering?"",""What are the success metrics for this feature?""]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-2eefc543-020b-4bd5-b29f-032147f97eda,[],[0.3],[0.5],[0.7]
+t-2eefc543-020b-4bd5-b29f-032147f97eda,2eefc543-020b-4bd5-b29f-032147f97eda,PRD Genie,SPAN,PRD Genie,52:05.4,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,"The user should be able to filter reports by date range, category, and status. Results must load in under 2 seconds. PM: Sarah. Deadline: Q3. Use the extraction output from T1 to generate a full PRD. Use the PRD to generate user stories.","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | Performance | Not stated |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency                  | Owner   | Status  | Risk    |
+|-----------------------------|---------|---------|---------|
+| Extraction output from T1   | UNKNOWN | UNKNOWN | UNKNOWN |
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+
+- What specific categories can reports be filtered by?
+- What statuses are available for filtering?
+- What are the success metrics for this feature?
+
+## 10. Timeline
+
+- Deadline for the project: Q3.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],[0.6],[0.7],[1]
+8fac0c3b-2631-4fae-94e5-40782ff59291,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,GENERATION,Agent 3 · Story Breakdown,49:03.1,49:04.1,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""302"",""output"":""86"",""total"":""388""}","{""input"":0.000755,""output"":0.00086,""total"":0.001615}",0.001615,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | UNKNOWN  | UNKNOWN|
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Deadline for the project: Q3.","## Epic 1: Report Filtering
+
+### Feature 1.1: Filter Reports
+- **US-001** As a user, I want to filter reports by date range, category, and status, so that I can view specific data sets.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] The user should be able to filter reports by date range, category, and status.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-f0a47892-ee0d-4d01-8913-a23dd74abd05,[],[0.8],[0.5],[0.6]
+bfc3a87b-b614-42b3-9b34-2271eca3e2a5,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,GENERATION,Agent 2 · PRD Generator,49:01.1,49:02.1,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""238"",""output"":""302"",""total"":""540""}","{""input"":0.000595,""output"":0.00302,""total"":0.003615}",0.003615,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The user should be able to filter reports by date range, category, and status."",""type"":""FUNCTIONAL"",""quote"":""The user should be able to filter reports by date range, category, and status."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Results must load in under 2 seconds."",""type"":""NON_FUNCTIONAL"",""quote"":""Results must load in under 2 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}],""personas"":[],""constraints"":[{""constraint"":""Deadline for the project."",""quote"":""Deadline: Q3."",""category"":""TIMELINE""}],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | UNKNOWN  | UNKNOWN|
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Deadline for the project: Q3.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-f0a47892-ee0d-4d01-8913-a23dd74abd05,[],[0.7],[0.9],[0.3]
+14333153-5b82-46a3-89dc-b387a9d79dd5,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,49:01.1,49:02.1,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""76"",""output"":""626"",""total"":""702""}","{""input"":0.0000114,""output"":0.0003756,""total"":0.000387}",0.000387,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: Sarah)*
+   - Why this matters: Defining success metrics is crucial for evaluating the project's effectiveness.
+   - What was said: ""not discussed: success metrics""
+
+2. **User Personas** - Who are the target user personas for this project? *(Ask: Sarah)*
+   - Why this matters: Understanding user personas is essential for tailoring the product to meet user needs.
+   - What was said: ""not discussed: user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: Sarah)*
+   - Why this matters: A clear business goal will guide the project's direction and priorities.
+   - What was said: ""not discussed: business goal""
+
+4. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: Sarah)*
+   - Why this matters: Defining out-of-scope items helps prevent scope creep and keeps the project focused.
+   - What was said: ""not discussed: out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the project's timeline or execution? *(Ask: Sarah)*
+   - Why this matters: Identifying dependencies is critical for effective project planning and risk management.
+   - What was said: ""not discussed: dependencies""
+
+6. **Assumptions** - What assumptions are we making that could affect the project's outcome? *(Ask: Sarah)*
+   - Why this matters: Clarifying assumptions helps in understanding potential risks and challenges.
+   - What was said: ""not discussed: assumptions""
+
+7. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: Sarah)*
+   - Why this matters: Non-functional requirements are essential for ensuring the product meets quality standards.
+   - What was said: ""not discussed: non-functional requirements""
+
+8. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: Sarah)*
+   - Why this matters: Clear acceptance criteria are necessary for determining when the project is complete and meets requirements.
+   - What was said: ""not discussed: acceptance criteria""
+
+## Clarifying Questions
+1. **Project Timeline** - Can we clarify the specific milestones and deadlines leading up to Q3? *(Ask: Sarah)*
+   - Why this matters: Understanding the timeline will help in planning and resource allocation.
+
+## Unresolved Conflicts
+- No unresolved conflicts were identified in the extraction.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-f0a47892-ee0d-4d01-8913-a23dd74abd05,[],[0.4],[0],[1]
+ae832a2f-40f6-4392-b123-05950df285e4,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,SPAN,Guardrail · sufficiency gate,49:00.4,49:00.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 2 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":2}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-f0a47892-ee0d-4d01-8913-a23dd74abd05,[],[0.5],[0],[1]
+69d1597e-8ff6-4150-b705-c6fb50ca2ca4,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,SPAN,Guardrail · quote validation,49:00.3,49:00.3,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":2}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-f0a47892-ee0d-4d01-8913-a23dd74abd05,[],[1],[0],[0.3]
+t-f0a47892-ee0d-4d01-8913-a23dd74abd05,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,SPAN,PRD Genie,48:59.1,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,"The user should be able to filter reports by date range, category, and status. Results must load in under 2 seconds. PM: Sarah. Deadline: Q3. Use the extraction output to generate a full PRD.","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | UNKNOWN  | UNKNOWN|
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Deadline for the project: Q3.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],[0.7],[0.5],[0.5]
+80f015ba-24e6-4c80-b7d5-1f3eef9b2618,f0a47892-ee0d-4d01-8913-a23dd74abd05,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,48:59.1,49:00.1,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""48"",""output"":""238"",""total"":""286""}","{""input"":0.0000072,""output"":0.0001428,""total"":0.00015}",0.00015,"The user should be able to filter reports by date range, category, and status. Results must load in under 2 seconds. PM: Sarah. Deadline: Q3. Use the extraction output to generate a full PRD.","{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The user should be able to filter reports by date range, category, and status."",""type"":""FUNCTIONAL"",""quote"":""The user should be able to filter reports by date range, category, and status."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Results must load in under 2 seconds."",""type"":""NON_FUNCTIONAL"",""quote"":""Results must load in under 2 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}],""personas"":[],""constraints"":[{""constraint"":""Deadline for the project."",""quote"":""Deadline: Q3."",""category"":""TIMELINE""}],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-f0a47892-ee0d-4d01-8913-a23dd74abd05,[],[0.6],[0],[1]
+30959325-3c0d-451e-a0d3-ee0c5aa554f8,97108624-4f9c-494e-9db4-47b957ddd893,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,45:35.3,45:36.3,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""86"",""output"":""752"",""total"":""838""}","{""input"":0.0000129,""output"":0.0004512,""total"":0.0004641}",0.0004641,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[{""name"":""Team Alpha"",""role"":""UNKNOWN"",""position"":""building the new auth service""}]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of the new auth service? *(Ask: unassigned)*
+   - Why this matters: Defining success metrics is crucial for evaluating the effectiveness of the service post-launch.
+   - What was said: ""not discussed: success metrics""
+
+2. **User Personas** - Who are the target user personas for the new auth service? *(Ask: unassigned)*
+   - Why this matters: Understanding user personas is essential for tailoring the service to meet user needs.
+   - What was said: ""not discussed: user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with the new auth service? *(Ask: unassigned)*
+   - Why this matters: A clear business goal will guide the development and prioritization of features.
+   - What was said: ""not discussed: business goal""
+
+4. **Out of Scope** - What features or functionalities are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining out-of-scope items helps prevent scope creep and keeps the project focused.
+   - What was said: ""not discussed: out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the development of the new auth service? *(Ask: unassigned)*
+   - Why this matters: Identifying dependencies is critical for planning and risk management.
+   - What was said: ""not discussed: dependencies""
+
+6. **Assumptions** - What assumptions are we making about the new auth service and its implementation? *(Ask: unassigned)*
+   - Why this matters: Clarifying assumptions can help identify potential risks and areas for further investigation.
+   - What was said: ""not discussed: assumptions""
+
+7. **Timeline** - What is the expected timeline for the development and launch of the new auth service? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is necessary for project planning and resource allocation.
+   - What was said: ""not discussed: timeline""
+
+8. **Non-Functional Requirements** - What non-functional requirements (e.g., performance, security, scalability) must the new auth service meet? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are essential for ensuring the service operates effectively under expected conditions.
+   - What was said: ""not discussed: non-functional requirements""
+
+9. **Acceptance Criteria** - What are the acceptance criteria for the new auth service? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are necessary for validating that the service meets the required standards before launch.
+   - What was said: ""not discussed: acceptance criteria""
+
+## Clarifying Questions
+1. **Stakeholder Involvement** - Who from Team Alpha will be the primary point of contact for this project? *(Ask: unassigned)*
+   - Why this matters: Identifying a primary contact will streamline communication and decision-making.
+
+## Unresolved Conflicts
+- There are currently no identified conflicts in the requirements discussion.","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""halted""]",,t-97108624-4f9c-494e-9db4-47b957ddd893,[],[0.5],[0],[1]
+5d891daa-342a-4b40-b9dc-416af8dbdcf7,97108624-4f9c-494e-9db4-47b957ddd893,PRD Genie,SPAN,Guardrail · sufficiency gate,45:34.6,45:34.7,,default,,,96dfeb36f1a4432eae44b509d2854516,WARNING,HALTED — no stated requirements; PRD Generator not invoked,,,,,,{},{},{},0,"{""stated_count"":0}","{""proceeded"":false}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""halted""]",,t-97108624-4f9c-494e-9db4-47b957ddd893,[],[0.5],[0],[0.2]
+4fa62ba5-da13-4ed4-ba8f-54c3581b34b7,97108624-4f9c-494e-9db4-47b957ddd893,PRD Genie,SPAN,Guardrail · quote validation,45:34.5,45:34.6,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":0}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""halted""]",,t-97108624-4f9c-494e-9db4-47b957ddd893,[],[1],[0],[1]
+9885d4a0-dad7-4e95-bc9f-2a49a41f3c70,97108624-4f9c-494e-9db4-47b957ddd893,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,45:33.3,45:34.3,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""22"",""output"":""152"",""total"":""174""}","{""input"":0.0000033,""output"":0.0000912,""total"":0.000094499999}",9.45E-05,SSO login requires the new auth service which is being built by Team Alpha. ETA unknown.,"{""input_assessment"":""PARTIAL"",""stated_requirements"":[],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Team Alpha"",""role"":""UNKNOWN"",""position"":""building the new auth service""}],""personas"":[],""constraints"":[],""dependencies"":[{""item"":""new auth service"",""owner"":""Team Alpha"",""eta"":""unknown"",""quote"":""SSO login requires the new auth service which is being built by Team Alpha. ETA unknown.""}],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""halted""]",,t-97108624-4f9c-494e-9db4-47b957ddd893,[],[0.5],[0],[0.5]
+t-97108624-4f9c-494e-9db4-47b957ddd893,97108624-4f9c-494e-9db4-47b957ddd893,PRD Genie,SPAN,PRD Genie,45:33.3,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,SSO login requires the new auth service which is being built by Team Alpha. ETA unknown.,"# PRD Genie - No PRD Generated
+
+**Test ID:** chat
+**Input assessment:** PARTIAL
+
+No requirements could be extracted from this input, so no PRD was generated.
+Generating one would require inventing content that was never stated.
+
+## What is missing
+
+## Topics not discussed
+- success metrics
+- user personas
+- business goal
+- out of scope
+- dependencies
+- assumptions
+- timeline
+- non-functional requirements
+- acceptance criteria
+
+_See clarification-questions.md for the questions to take back to stakeholders._","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",,,"[""PARTIAL"",""chat"",""halted""]",,,[],[0.5],[0.2],[0]
+ce6caab5-d4d3-4d05-830f-1b929db2243e,4fdea147-6633-43ee-82f9-254e59bda829,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,45:03.5,45:04.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""65"",""output"":""698"",""total"":""763""}","{""input"":0.00000975,""output"":0.0004188,""total"":0.00042855}",0.00042855,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: unassigned)*
+   - Why this matters: Without clear success metrics, we cannot evaluate the effectiveness of the project post-launch.
+   - What was said: ""success metrics""
+
+2. **User Personas** - Who are the target user personas for this product? *(Ask: unassigned)*
+   - Why this matters: Understanding user personas is crucial for tailoring the product to meet user needs effectively.
+   - What was said: ""user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+   - Why this matters: A clear business goal will guide the project direction and priorities.
+   - What was said: ""business goal""
+
+4. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining what is out of scope helps prevent scope creep and keeps the project focused.
+   - What was said: ""out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the project timeline or deliverables? *(Ask: unassigned)*
+   - Why this matters: Identifying dependencies is essential for effective project planning and risk management.
+   - What was said: ""dependencies""
+
+6. **Assumptions** - What assumptions are we making that could affect the project outcomes? *(Ask: unassigned)*
+   - Why this matters: Understanding assumptions helps in risk assessment and planning for contingencies.
+   - What was said: ""assumptions""
+
+7. **Timeline** - What is the expected timeline for the project, including key milestones? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is necessary for resource allocation and project management.
+   - What was said: ""timeline""
+
+8. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are critical for ensuring the product meets performance and usability standards.
+   - What was said: ""non-functional requirements""
+
+9. **Acceptance Criteria** - What are the acceptance criteria for the project deliverables? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are essential for validating that the project meets its objectives before launch.
+   - What was said: ""acceptance criteria""
+
+## Clarifying Questions
+1. **Stakeholders** - Who are the key stakeholders involved in this project, and what are their roles? *(Ask: unassigned)*
+   - Why this matters: Identifying stakeholders is important for communication and decision-making throughout the project.
+   - What was said: ""stakeholders""
+
+## Unresolved Conflicts
+(No unresolved conflicts identified in the extraction.)","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""INSUFFICIENT"",""chat"",""halted""]",,t-4fdea147-6633-43ee-82f9-254e59bda829,[],[0.5],[0.1],[1]
+2dc9025b-7417-4c36-9876-ed6d2dd99ef3,4fdea147-6633-43ee-82f9-254e59bda829,PRD Genie,SPAN,Guardrail · sufficiency gate,45:02.8,45:02.8,,default,,,96dfeb36f1a4432eae44b509d2854516,WARNING,HALTED — no stated requirements; PRD Generator not invoked,,,,,,{},{},{},0,"{""stated_count"":0}","{""proceeded"":false}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""INSUFFICIENT"",""chat"",""halted""]",,t-4fdea147-6633-43ee-82f9-254e59bda829,[],[0.5],[0],[1]
+721f2d4f-90ea-4d56-b74c-cdcd0e5e5df5,4fdea147-6633-43ee-82f9-254e59bda829,PRD Genie,SPAN,Guardrail · quote validation,45:02.7,45:02.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":0}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""INSUFFICIENT"",""chat"",""halted""]",,t-4fdea147-6633-43ee-82f9-254e59bda829,[],[1],[0],[1]
+t-4fdea147-6633-43ee-82f9-254e59bda829,4fdea147-6633-43ee-82f9-254e59bda829,PRD Genie,SPAN,PRD Genie,45:01.5,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,Meeting happened. Notes: none.,"# PRD Genie - No PRD Generated
+
+**Test ID:** chat
+**Input assessment:** INSUFFICIENT
+
+No requirements could be extracted from this input, so no PRD was generated.
+Generating one would require inventing content that was never stated.
+
+## What is missing
+
+## Topics not discussed
+- success metrics
+- user personas
+- business goal
+- out of scope
+- dependencies
+- assumptions
+- timeline
+- non-functional requirements
+- acceptance criteria
+
+_See clarification-questions.md for the questions to take back to stakeholders._","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",,,"[""INSUFFICIENT"",""chat"",""halted""]",,,[],[0],[1],[0]
+1a43e13d-d972-45dd-875d-a251dd31b845,4fdea147-6633-43ee-82f9-254e59bda829,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,45:01.5,45:02.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""8"",""output"":""92"",""total"":""100""}","{""input"":0.0000012,""output"":0.0000552,""total"":0.0000564}",0.0000564,Meeting happened. Notes: none.,"{""input_assessment"":""INSUFFICIENT"",""stated_requirements"":[],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""INSUFFICIENT"",""chat"",""halted""]",,t-4fdea147-6633-43ee-82f9-254e59bda829,[],[0],[1],[0]
+106550f0-efd6-404b-b941-8dbbed2057da,648563cf-435d-4930-9608-4855d123b195,PRD Genie,GENERATION,Agent 3 · Story Breakdown,44:36.8,44:37.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""321"",""output"":""220"",""total"":""541""}","{""input"":0.0008025,""output"":0.0022,""total"":0.0030025}",0.0030025,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+- **Admin**: Admins need bulk user management. Current workaround: UNKNOWN.
+- **End user**: End users need a simplified view. Current workaround: UNKNOWN.
+- **Auditor**: Auditors need read-only access with full history. Current workaround: UNKNOWN.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                           | Priority   | Source  |
+|--------|---------------------------------------|------------|---------|
+| REQ-001| Bulk user management                  | Not stated | REQ-001 |
+| REQ-002| Simplified view                       | Not stated | REQ-002 |
+| REQ-003| Read-only access with full history    | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+None.
+
+## 10. Timeline
+Not discussed in this meeting.","```markdown
+## Epic 1: User Management and Access
+
+### Feature 1.1: Bulk User Management
+- **US-001** As an Admin, I want bulk user management, so that I can efficiently manage multiple users at once.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] Not discussed in this meeting.
+
+### Feature 1.2: Simplified View
+- **US-002** As an End user, I want a simplified view, so that I can easily navigate and understand the information presented.
+  - Priority: Not stated
+  - Source: REQ-002
+  - Acceptance Criteria:
+    - [ ] Not discussed in this meeting.
+
+### Feature 1.3: Read-Only Access with Full History
+- **US-003** As an Auditor, I want read-only access with full history, so that I can review past actions without altering data.
+  - Priority: Not stated
+  - Source: REQ-003
+  - Acceptance Criteria:
+    - [ ] Not discussed in this meeting.
+```","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-648563cf-435d-4930-9608-4855d123b195,[],[0.7],[0.1],[1]
+dc594a28-2ddb-4bfd-9d37-98a6c0db6acc,648563cf-435d-4930-9608-4855d123b195,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,44:34.8,44:35.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""61"",""output"":""633"",""total"":""694""}","{""input"":0.00000915,""output"":0.0003798,""total"":0.00038895}",0.00038895,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: unassigned)*
+   - Why this matters: Without clear success metrics, we cannot evaluate the effectiveness of the project post-launch.
+   - What was said: ""success metrics""
+
+2. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+   - Why this matters: Understanding the business goal is crucial for aligning the project with overall company objectives.
+   - What was said: ""business goal""
+
+3. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining what is out of scope helps prevent scope creep and keeps the project focused.
+   - What was said: ""out of scope""
+
+4. **Dependencies** - What dependencies exist that could impact the timeline or execution of this project? *(Ask: unassigned)*
+   - Why this matters: Identifying dependencies is essential for planning and risk management.
+   - What was said: ""dependencies""
+
+5. **Assumptions** - What assumptions are we making that could affect the project's success? *(Ask: unassigned)*
+   - Why this matters: Clarifying assumptions helps in understanding potential risks and challenges.
+   - What was said: ""assumptions""
+
+6. **Timeline** - What is the expected timeline for the completion of this project? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is necessary for resource allocation and project management.
+   - What was said: ""timeline""
+
+7. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are critical for ensuring the quality and performance of the final product.
+   - What was said: ""non-functional requirements""
+
+8. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: unassigned)*
+   - Why this matters: Acceptance criteria define the conditions under which the project will be considered complete and successful.
+   - What was said: ""acceptance criteria""
+
+## Clarifying Questions
+1. **Stakeholders** - Who are the key stakeholders involved in this project, and what are their roles? *(Ask: unassigned)*
+   - Why this matters: Identifying stakeholders is important for communication and decision-making throughout the project.
+   - What was said: ""stakeholders""
+
+## Unresolved Conflicts
+(No unresolved conflicts identified in the extraction.)","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-648563cf-435d-4930-9608-4855d123b195,[],[0.3],[0.1],[1]
+62c68e21-91b5-4794-8b68-f1767a4503a0,648563cf-435d-4930-9608-4855d123b195,PRD Genie,GENERATION,Agent 2 · PRD Generator,44:34.8,44:35.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""331"",""output"":""321"",""total"":""652""}","{""input"":0.0008275,""output"":0.00321,""total"":0.0040375}",0.0040375,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""bulk user management"",""type"":""FUNCTIONAL"",""quote"":""Admins need bulk user management."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""simplified view"",""type"":""FUNCTIONAL"",""quote"":""End users need a simplified view."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-003"",""requirement"":""read-only access with full history"",""type"":""FUNCTIONAL"",""quote"":""Auditors need read-only access with full history."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[{""id"":""PER-001"",""persona"":""Admin"",""key_need"":""bulk user management"",""quote"":""Admins need bulk user management."",""current_workaround"":""UNKNOWN""},{""id"":""PER-002"",""persona"":""End user"",""key_need"":""simplified view"",""quote"":""End users need a simplified view."",""current_workaround"":""UNKNOWN""},{""id"":""PER-003"",""persona"":""Auditor"",""key_need"":""read-only access with full history"",""quote"":""Auditors need read-only access with full history."",""current_workaround"":""UNKNOWN""}],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+- **Admin**: Admins need bulk user management. Current workaround: UNKNOWN.
+- **End user**: End users need a simplified view. Current workaround: UNKNOWN.
+- **Auditor**: Auditors need read-only access with full history. Current workaround: UNKNOWN.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                           | Priority   | Source  |
+|--------|---------------------------------------|------------|---------|
+| REQ-001| Bulk user management                  | Not stated | REQ-001 |
+| REQ-002| Simplified view                       | Not stated | REQ-002 |
+| REQ-003| Read-only access with full history    | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+None.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-648563cf-435d-4930-9608-4855d123b195,[],[0.8],[0.2],[0.7]
+7ca44d59-dc97-4dfd-9696-3aa2419c92b1,648563cf-435d-4930-9608-4855d123b195,PRD Genie,SPAN,Guardrail · sufficiency gate,44:34.1,44:34.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 3 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":3}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-648563cf-435d-4930-9608-4855d123b195,[],[0.4],[0.3],[0]
+2621e3c9-470b-40a8-b42e-0fdd8457f72d,648563cf-435d-4930-9608-4855d123b195,PRD Genie,SPAN,Guardrail · quote validation,44:34.0,44:34.1,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":3}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-648563cf-435d-4930-9608-4855d123b195,[],[1],[1],[1]
+7733219e-de36-4bec-ba1f-13e21e858f20,648563cf-435d-4930-9608-4855d123b195,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,44:32.8,44:33.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""30"",""output"":""331"",""total"":""361""}","{""input"":0.0000045,""output"":0.0001986,""total"":0.0002031}",0.0002031,Admins need bulk user management. End users need a simplified view. Auditors need read-only access with full history.,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""bulk user management"",""type"":""FUNCTIONAL"",""quote"":""Admins need bulk user management."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""simplified view"",""type"":""FUNCTIONAL"",""quote"":""End users need a simplified view."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-003"",""requirement"":""read-only access with full history"",""type"":""FUNCTIONAL"",""quote"":""Auditors need read-only access with full history."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[{""id"":""PER-001"",""persona"":""Admin"",""key_need"":""bulk user management"",""quote"":""Admins need bulk user management."",""current_workaround"":""UNKNOWN""},{""id"":""PER-002"",""persona"":""End user"",""key_need"":""simplified view"",""quote"":""End users need a simplified view."",""current_workaround"":""UNKNOWN""},{""id"":""PER-003"",""persona"":""Auditor"",""key_need"":""read-only access with full history"",""quote"":""Auditors need read-only access with full history."",""current_workaround"":""UNKNOWN""}],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-648563cf-435d-4930-9608-4855d123b195,[],[0.8],[0.2],[0.7]
+t-648563cf-435d-4930-9608-4855d123b195,648563cf-435d-4930-9608-4855d123b195,PRD Genie,SPAN,PRD Genie,44:32.8,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,Admins need bulk user management. End users need a simplified view. Auditors need read-only access with full history.,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+- **Admin**: Admins need bulk user management. Current workaround: UNKNOWN.
+- **End user**: End users need a simplified view. Current workaround: UNKNOWN.
+- **Auditor**: Auditors need read-only access with full history. Current workaround: UNKNOWN.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                           | Priority   | Source  |
+|--------|---------------------------------------|------------|---------|
+| REQ-001| Bulk user management                  | Not stated | REQ-001 |
+| REQ-002| Simplified view                       | Not stated | REQ-002 |
+| REQ-003| Read-only access with full history    | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+None.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],[0.8],[0],[1]
+9eba5cab-0bfe-4d37-81fc-47452dddbb47,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,GENERATION,Agent 3 · Story Breakdown,43:47.5,43:48.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""304"",""output"":""165"",""total"":""469""}","{""input"":0.00076,""output"":0.00165,""total"":0.00241}",0.00241,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                      | Priority   | Source  |
+|--------|--------------------------------------------------|------------|---------|
+| REQ-001| API must support 10,000 concurrent users.        | Not stated | REQ-001 |
+| REQ-003| Must integrate with Salesforce REST API v52.     | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                        | Category | Target   |
+|--------|------------------------------------|----------|----------|
+| REQ-002| Response time < 200ms at p95.      | UNKNOWN  | UNKNOWN  |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+None.
+
+## 10. Timeline
+Not discussed in this meeting.","## Epic 1: API Enhancements
+
+### Feature 1.1: Support for Concurrent Users
+- **US-001** As a user, I want the API to support 10,000 concurrent users, so that the system can handle high traffic without performance degradation.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] API must support 10,000 concurrent users.
+
+### Feature 1.2: Integration with Salesforce
+- **US-002** As a user, I want the system to integrate with Salesforce REST API v52, so that data can be synchronized between the systems.
+  - Priority: Not stated
+  - Source: REQ-003
+  - Acceptance Criteria:
+    - [ ] Must integrate with Salesforce REST API v52.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,[],[0.7],[0.1],[1]
+34996638-6d71-45d0-8f48-3d850d66dc6a,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,43:45.5,43:46.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""62"",""output"":""649"",""total"":""711""}","{""input"":0.0000093,""output"":0.0003894,""total"":0.0003987}",0.0003987,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: unassigned)*
+   - Why this matters: Without clear success metrics, we cannot evaluate the effectiveness of the project post-launch.
+   - What was said: ""success metrics""
+
+2. **User Personas** - Who are the target user personas for this product? *(Ask: unassigned)*
+   - Why this matters: Understanding user personas is crucial for tailoring the product to meet user needs effectively.
+   - What was said: ""user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+   - Why this matters: A clear business goal will guide the development process and ensure alignment with organizational objectives.
+   - What was said: ""business goal""
+
+4. **Out of Scope** - What elements or features are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining what is out of scope helps prevent scope creep and keeps the project focused.
+   - What was said: ""out of scope""
+
+5. **Assumptions** - What assumptions are we making that could impact the project? *(Ask: unassigned)*
+   - Why this matters: Identifying assumptions allows us to address potential risks early in the development process.
+   - What was said: ""assumptions""
+
+6. **Timeline** - What is the expected timeline for the project, including key milestones? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is essential for planning resources and managing stakeholder expectations.
+   - What was said: ""timeline""
+
+7. **Non-Functional Requirements** - What non-functional requirements do we need to consider for this project? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are critical for ensuring the product meets performance and usability standards.
+   - What was said: ""non-functional requirements""
+
+8. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are necessary to determine when the project is complete and meets stakeholder expectations.
+   - What was said: ""acceptance criteria""
+
+## Clarifying Questions
+1. **Stakeholders** - Who are the key stakeholders involved in this project, and what are their roles? *(Ask: unassigned)*
+   - Why this matters: Identifying stakeholders is important for ensuring effective communication and collaboration throughout the project.
+
+## Unresolved Conflicts
+- There are currently no identified conflicts in the requirements discussion.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,[],[0.7],[0],[1]
+56edb9da-3d64-4c1b-8467-97c8a9649656,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,GENERATION,Agent 2 · PRD Generator,43:45.5,43:46.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""228"",""output"":""304"",""total"":""532""}","{""input"":0.00057,""output"":0.00304,""total"":0.00361}",0.00361,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""API must support 10,000 concurrent users."",""type"":""FUNCTIONAL"",""quote"":""API must support 10,000 concurrent users."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Response time < 200ms at p95."",""type"":""NON_FUNCTIONAL"",""quote"":""Response time < 200ms at p95."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-003"",""requirement"":""Must integrate with Salesforce REST API v52."",""type"":""FUNCTIONAL"",""quote"":""Must integrate with Salesforce REST API v52."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                      | Priority   | Source  |
+|--------|--------------------------------------------------|------------|---------|
+| REQ-001| API must support 10,000 concurrent users.        | Not stated | REQ-001 |
+| REQ-003| Must integrate with Salesforce REST API v52.     | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                        | Category | Target   |
+|--------|------------------------------------|----------|----------|
+| REQ-002| Response time < 200ms at p95.      | UNKNOWN  | UNKNOWN  |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+None.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,[],[0.6],[0.9],[0.5]
+7ee91327-36ea-4857-aadb-2b18f1e03a99,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,SPAN,Guardrail · sufficiency gate,43:44.8,43:44.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 3 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":3}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,[],[0.5],[0.3],[1]
+40974e0b-e034-458c-8365-be44e490ac64,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,SPAN,Guardrail · quote validation,43:44.7,43:44.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":3}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,[],[0.7],[0],[0.7]
+t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,SPAN,PRD Genie,43:43.5,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,"API must support 10,000 concurrent users. Response time < 200ms at p95. Must integrate with Salesforce REST API v52.","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                      | Priority   | Source  |
+|--------|--------------------------------------------------|------------|---------|
+| REQ-001| API must support 10,000 concurrent users.        | Not stated | REQ-001 |
+| REQ-003| Must integrate with Salesforce REST API v52.     | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                        | Category | Target   |
+|--------|------------------------------------|----------|----------|
+| REQ-002| Response time < 200ms at p95.      | UNKNOWN  | UNKNOWN  |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+None.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],[1],[0.3],[0.7]
+d527272b-9ea2-4229-acb9-809510993b09,4ee562ef-11ca-4f97-97b1-78c8f6e07007,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,43:43.5,43:44.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""29"",""output"":""228"",""total"":""257""}","{""input"":0.00000435,""output"":0.0001368,""total"":0.00014115}",0.00014115,"API must support 10,000 concurrent users. Response time < 200ms at p95. Must integrate with Salesforce REST API v52.","{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""API must support 10,000 concurrent users."",""type"":""FUNCTIONAL"",""quote"":""API must support 10,000 concurrent users."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Response time < 200ms at p95."",""type"":""NON_FUNCTIONAL"",""quote"":""Response time < 200ms at p95."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-003"",""requirement"":""Must integrate with Salesforce REST API v52."",""type"":""FUNCTIONAL"",""quote"":""Must integrate with Salesforce REST API v52."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-4ee562ef-11ca-4f97-97b1-78c8f6e07007,[],[0.9],[0],[0.8]
+ab4a43ed-fbe2-4816-85d4-0956100c6394,c2857869-c9ec-4066-abaf-921e74a51e08,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,41:53.3,41:54.3,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""281"",""output"":""451"",""total"":""732""}","{""input"":0.00004215,""output"":0.0002706,""total"":0.00031275}",0.00031275,"{""ambiguous_items"":[{""id"":""AMB-001"",""topic"":""Architecture Preference"",""quote"":""Design wants single-page app."",""why_ambiguous"":""There is no decision made on whether to use microservices or a single-page app.""},{""id"":""AMB-002"",""topic"":""Timeline"",""quote"":""PM wants it shipped by March."",""why_ambiguous"":""The timeline is stated, but there are no details on what 'it' refers to or if the timeline is feasible.""}],""contradictions"":[{""id"":""CON-001"",""position_a"":{""quote"":""Engineering wants microservices."",""speaker"":""UNKNOWN""},""position_b"":{""quote"":""Design wants single-page app."",""speaker"":""UNKNOWN""},""conflict"":""Engineering and Design have conflicting preferences for the architecture."",""resolved"":false}],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[{""name"":""UNKNOWN"",""role"":""PM"",""position"":""wants it shipped by March.""},{""name"":""UNKNOWN"",""role"":""Engineering"",""position"":""wants microservices.""},{""name"":""UNKNOWN"",""role"":""Design"",""position"":""wants single-page app.""}]}","## Blocking Questions
+1. **Architecture Preference** - What is the final decision on whether to use microservices or a single-page app? *(Ask: unassigned)*
+   - Why this matters: The architecture choice will significantly impact development and resource allocation.
+   - What was said: ""Design wants single-page app.""
+
+2. **Timeline** - What specific features or deliverables does 'it' refer to in the March shipping timeline, and is this timeline feasible? *(Ask: PM)*
+   - Why this matters: Clarity on the timeline and deliverables is essential for planning and resource management.
+   - What was said: ""PM wants it shipped by March.""
+
+## Clarifying Questions
+1. **Success Metrics** - What success metrics will be used to evaluate the project's performance? *(Ask: unassigned)*
+2. **User Personas** - Who are the target user personas for this project? *(Ask: unassigned)*
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+4. **Out of Scope** - What elements or features are considered out of scope for this project? *(Ask: unassigned)*
+5. **Dependencies** - What dependencies exist that could impact the project timeline or deliverables? *(Ask: unassigned)*
+6. **Assumptions** - What assumptions are we making that could affect the project's success? *(Ask: unassigned)*
+7. **Non-Functional Requirements** - What non-functional requirements (e.g., performance, security) need to be considered? *(Ask: unassigned)*
+8. **Acceptance Criteria** - What are the acceptance criteria for the project? *(Ask: unassigned)*
+
+## Unresolved Conflicts
+1. **Architecture Preference** - Engineering wants microservices, while Design wants a single-page app. *(Engineering: UNKNOWN, Design: UNKNOWN)*
+   - What should be the final architecture decision?","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""1"",""ambiguous_count"":""2"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""halted""]",,t-c2857869-c9ec-4066-abaf-921e74a51e08,[],[0.7],[0.2],[1]
+a8a833bc-5c99-4bb1-806a-2040e846f8bb,c2857869-c9ec-4066-abaf-921e74a51e08,PRD Genie,SPAN,Guardrail · sufficiency gate,41:52.6,41:52.6,,default,,,96dfeb36f1a4432eae44b509d2854516,WARNING,HALTED — no stated requirements; PRD Generator not invoked,,,,,,{},{},{},0,"{""stated_count"":0}","{""proceeded"":false}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""1"",""ambiguous_count"":""2"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""halted""]",,t-c2857869-c9ec-4066-abaf-921e74a51e08,[],[0.5],[0],[0]
+2f1e2d8f-6913-4a85-ab8b-492e78097e6d,c2857869-c9ec-4066-abaf-921e74a51e08,PRD Genie,SPAN,Guardrail · quote validation,41:52.5,41:52.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":0}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""1"",""ambiguous_count"":""2"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""halted""]",,t-c2857869-c9ec-4066-abaf-921e74a51e08,[],[1],[0],[1]
+t-c2857869-c9ec-4066-abaf-921e74a51e08,c2857869-c9ec-4066-abaf-921e74a51e08,PRD Genie,SPAN,PRD Genie,41:51.3,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,Engineering wants microservices. Design wants single-page app. PM wants it shipped by March.,"# PRD Genie - No PRD Generated
+
+**Test ID:** chat
+**Input assessment:** PARTIAL
+
+No requirements could be extracted from this input, so no PRD was generated.
+Generating one would require inventing content that was never stated.
+
+## What is missing
+
+## Topics not discussed
+- success metrics
+- user personas
+- business goal
+- out of scope
+- dependencies
+- assumptions
+- non-functional requirements
+- acceptance criteria
+
+_See clarification-questions.md for the questions to take back to stakeholders._","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""1"",""ambiguous_count"":""2"",""stated_count"":""0"",""test_id"":""chat""}",,,"[""PARTIAL"",""chat"",""halted""]",,,[],[0.2],[1],[0]
+470c0deb-9971-4703-bd5c-cb34569c146d,c2857869-c9ec-4066-abaf-921e74a51e08,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,41:51.3,41:52.3,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""23"",""output"":""307"",""total"":""330""}","{""input"":0.00000345,""output"":0.0001842,""total"":0.00018765}",0.00018765,Engineering wants microservices. Design wants single-page app. PM wants it shipped by March.,"{""input_assessment"":""PARTIAL"",""stated_requirements"":[],""ambiguous_items"":[{""id"":""AMB-001"",""topic"":""Architecture Preference"",""quote"":""Design wants single-page app."",""why_ambiguous"":""There is no decision made on whether to use microservices or a single-page app.""},{""id"":""AMB-002"",""topic"":""Timeline"",""quote"":""PM wants it shipped by March."",""why_ambiguous"":""The timeline is stated, but there are no details on what 'it' refers to or if the timeline is feasible.""}],""contradictions"":[{""id"":""CON-001"",""position_a"":{""quote"":""Engineering wants microservices."",""speaker"":""UNKNOWN""},""position_b"":{""quote"":""Design wants single-page app."",""speaker"":""UNKNOWN""},""conflict"":""Engineering and Design have conflicting preferences for the architecture."",""resolved"":false}],""stakeholders"":[{""name"":""UNKNOWN"",""role"":""PM"",""position"":""wants it shipped by March.""},{""name"":""UNKNOWN"",""role"":""Engineering"",""position"":""wants microservices.""},{""name"":""UNKNOWN"",""role"":""Design"",""position"":""wants single-page app.""}],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""1"",""ambiguous_count"":""2"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""halted""]",,t-c2857869-c9ec-4066-abaf-921e74a51e08,[],[0.5],[0.5],[0.4]
+1c02a00d-d2a1-4979-a3bc-25ed74f52049,1f1f9150-18d4-4b9a-a037-75c35283560a,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,41:14.4,41:15.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""121"",""output"":""348"",""total"":""469""}","{""input"":0.00001815,""output"":0.0002088,""total"":0.00022695}",0.00022695,"{""ambiguous_items"":[{""id"":""AMB-001"",""topic"":""Budget"",""quote"":""budget TBD"",""why_ambiguous"":""The budget has not been defined and is subject to future discussion.""}],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[{""name"":""John"",""role"":""UNKNOWN"",""position"":""mentioned something about real-time""}]}","## Blocking Questions
+1. **Budget** - What is the defined budget for this project? *(Ask: unassigned)*
+   - Why this matters: Without a defined budget, project planning and resource allocation cannot proceed effectively.
+   - What was said: ""budget TBD""
+
+## Clarifying Questions
+1. **Success Metrics** - What specific success metrics will be used to evaluate the project's performance? *(Ask: unassigned)*
+2. **User Personas** - Who are the target user personas for this project? *(Ask: unassigned)*
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+4. **Out of Scope** - What elements or features are considered out of scope for this project? *(Ask: unassigned)*
+5. **Dependencies** - What dependencies exist that could impact the project's timeline or execution? *(Ask: unassigned)*
+6. **Assumptions** - What assumptions are we making that could affect the project's outcome? *(Ask: unassigned)*
+7. **Timeline** - What is the expected timeline for the project, including key milestones? *(Ask: unassigned)*
+8. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: unassigned)*
+9. **Acceptance Criteria** - What are the acceptance criteria for the project's deliverables? *(Ask: unassigned)*
+
+## Unresolved Conflicts
+(No unresolved conflicts identified in the input.)","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""1"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""halted""]",,t-1f1f9150-18d4-4b9a-a037-75c35283560a,[],[0.7],[0],[0.7]
+49b9f2ba-6d9b-484a-a083-5ecae0e4f1a8,1f1f9150-18d4-4b9a-a037-75c35283560a,PRD Genie,SPAN,Guardrail · sufficiency gate,41:13.7,41:13.8,,default,,,96dfeb36f1a4432eae44b509d2854516,WARNING,HALTED — no stated requirements; PRD Generator not invoked,,,,,,{},{},{},0,"{""stated_count"":0}","{""proceeded"":false}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""1"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""halted""]",,t-1f1f9150-18d4-4b9a-a037-75c35283560a,[],[0.2],[1],[0]
+201260c9-0181-434f-a9aa-21e98fabb905,1f1f9150-18d4-4b9a-a037-75c35283560a,PRD Genie,SPAN,Guardrail · quote validation,41:13.6,41:13.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":0}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""1"",""stated_count"":""0"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""halted""]",,t-1f1f9150-18d4-4b9a-a037-75c35283560a,[],,,
+b326a802-21ca-48aa-be8d-ec42c8ef33fe,1f1f9150-18d4-4b9a-a037-75c35283560a,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,41:12.4,41:13.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""20"",""output"":""147"",""total"":""167""}","{""input"":0.000003,""output"":0.0000882,""total"":0.0000912}",0.0000912,Discussed dashboard... John mentioned something about real-time... budget TBD...,"{""input_assessment"":""PARTIAL"",""stated_requirements"":[],""ambiguous_items"":[{""id"":""AMB-001"",""topic"":""Budget"",""quote"":""budget TBD"",""why_ambiguous"":""The budget has not been defined and is subject to future discussion.""}],""contradictions"":[],""stakeholders"":[{""name"":""John"",""role"":""UNKNOWN"",""position"":""mentioned something about real-time""}],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""1"",""stated_count"":""0"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""halted""]",,t-1f1f9150-18d4-4b9a-a037-75c35283560a,[],,,
+t-1f1f9150-18d4-4b9a-a037-75c35283560a,1f1f9150-18d4-4b9a-a037-75c35283560a,PRD Genie,SPAN,PRD Genie,41:12.4,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,Discussed dashboard... John mentioned something about real-time... budget TBD...,"# PRD Genie - No PRD Generated
+
+**Test ID:** chat
+**Input assessment:** PARTIAL
+
+No requirements could be extracted from this input, so no PRD was generated.
+Generating one would require inventing content that was never stated.
+
+## What is missing
+
+## Topics not discussed
+- success metrics
+- user personas
+- business goal
+- out of scope
+- dependencies
+- assumptions
+- timeline
+- non-functional requirements
+- acceptance criteria
+
+_See clarification-questions.md for the questions to take back to stakeholders._","{""halted_at_sufficiency_gate"":""true"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""1"",""stated_count"":""0"",""test_id"":""chat""}",,,"[""PARTIAL"",""chat"",""halted""]",,,[],,,
+856b0881-0985-461a-a9a1-62d1479c9f91,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,GENERATION,Agent 3 · Story Breakdown,39:24.7,39:25.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""277"",""output"":""215"",""total"":""492""}","{""input"":0.0006925,""output"":0.00215,""total"":0.0028425}",0.0028425,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                              | Priority   | Source  |
+|--------|------------------------------------------|------------|---------|
+| REQ-001| Users need to export reports as PDF and CSV. | Not stated | REQ-001 |
+| REQ-002| PDF must include company logo.            | Not stated | REQ-002 |
+| REQ-003| CSV must preserve formulas.               | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","## Epic 1: Report Export Functionality
+
+### Feature 1.1: Export Reports
+- **US-001** As a user, I want to export reports as PDF and CSV, so that I can share and analyze data in different formats.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] Users need to export reports as PDF and CSV.
+
+### Feature 1.2: PDF Export with Branding
+- **US-002** As a user, I want the exported PDF to include the company logo, so that the reports maintain company branding.
+  - Priority: Not stated
+  - Source: REQ-002
+  - Acceptance Criteria:
+    - [ ] PDF must include company logo.
+
+### Feature 1.3: CSV Export with Formulas
+- **US-003** As a user, I want the exported CSV to preserve formulas, so that data calculations remain intact.
+  - Priority: Not stated
+  - Source: REQ-003
+  - Acceptance Criteria:
+    - [ ] CSV must preserve formulas.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,[],,,
+f169ba9c-17a8-45c9-8c7e-6f292ec521e1,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,GENERATION,Agent 2 · PRD Generator,39:22.7,39:23.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""224"",""output"":""277"",""total"":""501""}","{""input"":0.00056,""output"":0.00277,""total"":0.003329999999}",0.00333,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""Users need to export reports as PDF and CSV."",""type"":""FUNCTIONAL"",""quote"":""Users need to export reports as PDF and CSV."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""PDF must include company logo."",""type"":""FUNCTIONAL"",""quote"":""PDF must include company logo."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-003"",""requirement"":""CSV must preserve formulas."",""type"":""FUNCTIONAL"",""quote"":""CSV must preserve formulas."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                              | Priority   | Source  |
+|--------|------------------------------------------|------------|---------|
+| REQ-001| Users need to export reports as PDF and CSV. | Not stated | REQ-001 |
+| REQ-002| PDF must include company logo.            | Not stated | REQ-002 |
+| REQ-003| CSV must preserve formulas.               | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,[],,,
+d43d8fd6-70e4-4c63-bfce-95477e9eecca,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,39:22.7,39:23.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""65"",""output"":""702"",""total"":""767""}","{""input"":0.00000975,""output"":0.0004212,""total"":0.00043095}",0.00043095,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: unassigned)*
+   - Why this matters: Without clear success metrics, we cannot evaluate the effectiveness of the project post-launch.
+   - What was said: ""success metrics""
+
+2. **User Personas** - Who are the target user personas for this project? *(Ask: unassigned)*
+   - Why this matters: Understanding user personas is crucial for tailoring the product to meet their needs.
+   - What was said: ""user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+   - Why this matters: A clear business goal will guide the project’s direction and priorities.
+   - What was said: ""business goal""
+
+4. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining what is out of scope helps prevent scope creep and keeps the project focused.
+   - What was said: ""out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the project timeline or deliverables? *(Ask: unassigned)*
+   - Why this matters: Identifying dependencies is essential for effective project planning and risk management.
+   - What was said: ""dependencies""
+
+6. **Assumptions** - What assumptions are we making that could affect the project’s success? *(Ask: unassigned)*
+   - Why this matters: Understanding assumptions helps in assessing risks and preparing for potential challenges.
+   - What was said: ""assumptions""
+
+7. **Timeline** - What is the expected timeline for the project, including key milestones? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is necessary for planning resources and managing stakeholder expectations.
+   - What was said: ""timeline""
+
+8. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are critical for ensuring the product meets performance and usability standards.
+   - What was said: ""non-functional requirements""
+
+9. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are essential for determining when the project is complete and meets stakeholder expectations.
+   - What was said: ""acceptance criteria""
+
+## Clarifying Questions
+1. **Stakeholders** - Who are the key stakeholders involved in this project, and what are their roles? *(Ask: unassigned)*
+   - Why this matters: Identifying stakeholders is important for communication and decision-making throughout the project.
+   - What was said: ""stakeholders""
+
+## Unresolved Conflicts
+(No unresolved conflicts identified in the extraction.)","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,[],,,
+7039aa7d-2cbc-48f6-9a6f-0b079993a568,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,SPAN,Guardrail · sufficiency gate,39:22.0,39:22.0,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 3 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":3}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,[],,,
+836a3be0-98bc-48fc-a076-d880bfc267b6,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,SPAN,Guardrail · quote validation,39:21.9,39:21.9,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":3}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,[],,,
+t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,SPAN,PRD Genie,39:20.7,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,Users need to export reports as PDF and CSV. PDF must include company logo. CSV must preserve formulas.,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                              | Priority   | Source  |
+|--------|------------------------------------------|------------|---------|
+| REQ-001| Users need to export reports as PDF and CSV. | Not stated | REQ-001 |
+| REQ-002| PDF must include company logo.            | Not stated | REQ-002 |
+| REQ-003| CSV must preserve formulas.               | Not stated | REQ-003 |
+
+### 4.2 Non-Functional Requirements
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],,,
+e8871d8e-1ebd-485c-b61b-86a6f63b01e5,04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,39:20.7,39:21.7,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""26"",""output"":""224"",""total"":""250""}","{""input"":0.0000039,""output"":0.0001344,""total"":0.0001383}",0.0001383,Users need to export reports as PDF and CSV. PDF must include company logo. CSV must preserve formulas.,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""Users need to export reports as PDF and CSV."",""type"":""FUNCTIONAL"",""quote"":""Users need to export reports as PDF and CSV."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""PDF must include company logo."",""type"":""FUNCTIONAL"",""quote"":""PDF must include company logo."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-003"",""requirement"":""CSV must preserve formulas."",""type"":""FUNCTIONAL"",""quote"":""CSV must preserve formulas."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""3"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-04a4efa1-a705-47ca-ae55-4d21c4d4ba1d,[],,,
+7faf5efd-8b6d-4311-81df-a96f7248f9f9,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,GENERATION,Agent 3 · Story Breakdown,36:34.2,36:35.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""294"",""output"":""91"",""total"":""385""}","{""input"":0.000735,""output"":0.00091,""total"":0.001645}",0.001645,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                | Priority   | Source  |
+|--------|--------------------------------------------|------------|---------|
+| REQ-001| The dashboard should auto-refresh every 5 seconds. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                                | Category   | Target  |
+|--------|--------------------------------------------|------------|---------|
+| REQ-002| Performance is critical, minimize API calls. | Performance | Not stated |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","## Epic 1: Dashboard Functionality
+
+### Feature 1.1: Auto-Refresh Dashboard
+- **US-001** As a user, I want the dashboard to auto-refresh every 5 seconds, so that I can see the most up-to-date information without manually refreshing.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] The dashboard should auto-refresh every 5 seconds.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-268b61f2-2632-4c52-a993-482df56e0a21,[],,,
+d7dc42a3-625e-4574-a170-52747f63a582,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,GENERATION,Agent 2 · PRD Generator,36:32.2,36:33.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""194"",""output"":""294"",""total"":""488""}","{""input"":0.000485,""output"":0.00294,""total"":0.003425}",0.003425,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The dashboard should auto-refresh every 5 seconds."",""type"":""FUNCTIONAL"",""quote"":""The dashboard should auto-refresh every 5 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Performance is critical, minimize API calls."",""type"":""NON_FUNCTIONAL"",""quote"":""Performance is critical, minimize API calls."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                | Priority   | Source  |
+|--------|--------------------------------------------|------------|---------|
+| REQ-001| The dashboard should auto-refresh every 5 seconds. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                                | Category   | Target  |
+|--------|--------------------------------------------|------------|---------|
+| REQ-002| Performance is critical, minimize API calls. | Performance | Not stated |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-268b61f2-2632-4c52-a993-482df56e0a21,[],,,
+21083f67-cf62-4763-822f-9065eb9130d6,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,36:32.2,36:33.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""65"",""output"":""701"",""total"":""766""}","{""input"":0.00000975,""output"":0.0004206,""total"":0.000430349999}",0.00043035,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: unassigned)*
+   - Why this matters: Without clear success metrics, we cannot evaluate the effectiveness of the project post-launch.
+   - What was said: ""success metrics""
+
+2. **User Personas** - Who are the target user personas for this product? *(Ask: unassigned)*
+   - Why this matters: Understanding user personas is crucial for tailoring the product to meet user needs effectively.
+   - What was said: ""user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+   - Why this matters: A clear business goal will guide the project direction and priorities.
+   - What was said: ""business goal""
+
+4. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining what is out of scope helps prevent scope creep and keeps the project focused.
+   - What was said: ""out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the project timeline or deliverables? *(Ask: unassigned)*
+   - Why this matters: Identifying dependencies is essential for effective project planning and risk management.
+   - What was said: ""dependencies""
+
+6. **Assumptions** - What assumptions are we making that could affect the project's success? *(Ask: unassigned)*
+   - Why this matters: Understanding assumptions helps in risk assessment and planning for contingencies.
+   - What was said: ""assumptions""
+
+7. **Timeline** - What is the expected timeline for the project, including key milestones? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is necessary for resource allocation and project management.
+   - What was said: ""timeline""
+
+8. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are critical for ensuring the product meets performance and usability standards.
+   - What was said: ""non-functional requirements""
+
+9. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are essential for determining when the project is complete and meets stakeholder expectations.
+   - What was said: ""acceptance criteria""
+
+## Clarifying Questions
+1. **Stakeholders** - Who are the key stakeholders involved in this project, and what are their roles? *(Ask: unassigned)*
+   - Why this matters: Identifying stakeholders is important for communication and decision-making throughout the project.
+   - What was said: ""stakeholders""
+
+## Unresolved Conflicts
+- There are no unresolved conflicts identified in the extraction.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-268b61f2-2632-4c52-a993-482df56e0a21,[],,,
+fed9de74-afa0-40e5-9fff-0d938c4d2904,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,SPAN,Guardrail · sufficiency gate,36:31.5,36:31.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 2 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":2}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-268b61f2-2632-4c52-a993-482df56e0a21,[],,,
+1b2c1e51-e7a5-4c8c-8430-1c3aeda99c28,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,SPAN,Guardrail · quote validation,36:31.4,36:31.4,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":2}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-268b61f2-2632-4c52-a993-482df56e0a21,[],,,
+t-268b61f2-2632-4c52-a993-482df56e0a21,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,SPAN,PRD Genie,36:30.2,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,"The dashboard should auto-refresh every 5 seconds. [Later in same meeting] Performance is critical, minimize API calls.","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                | Priority   | Source  |
+|--------|--------------------------------------------|------------|---------|
+| REQ-001| The dashboard should auto-refresh every 5 seconds. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                                | Category   | Target  |
+|--------|--------------------------------------------|------------|---------|
+| REQ-002| Performance is critical, minimize API calls. | Performance | Not stated |
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],,,
+4e11dfdf-db4e-4535-b91c-68a488efe54e,268b61f2-2632-4c52-a993-482df56e0a21,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,36:30.2,36:31.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""30"",""output"":""194"",""total"":""224""}","{""input"":0.0000045,""output"":0.0001164,""total"":0.0001209}",0.0001209,"The dashboard should auto-refresh every 5 seconds. [Later in same meeting] Performance is critical, minimize API calls.","{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The dashboard should auto-refresh every 5 seconds."",""type"":""FUNCTIONAL"",""quote"":""The dashboard should auto-refresh every 5 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Performance is critical, minimize API calls."",""type"":""NON_FUNCTIONAL"",""quote"":""Performance is critical, minimize API calls."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-268b61f2-2632-4c52-a993-482df56e0a21,[],,,
+73e8d1a5-e27f-4599-83ca-41594f956a0d,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,GENERATION,Agent 3 · Story Breakdown,35:50.2,35:51.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""231"",""output"":""144"",""total"":""375""}","{""input"":0.0005775,""output"":0.00144,""total"":0.0020175}",0.0020175,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                        | Priority   | Source  |
+|--------|------------------------------------|------------|---------|
+| REQ-001| better reporting                   | Not stated | REQ-001 |
+| REQ-002| reporting similar to Competitor X  | Not stated | REQ-002 |
+
+### 4.2 Non-Functional Requirements
+
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","## Epic 1: Reporting Enhancements
+
+### Feature 1.1: Improved Reporting Capabilities
+- **US-001** As a user, I want better reporting, so that I can gain more insights from the data.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] Not discussed in this meeting.
+
+### Feature 1.2: Competitive Reporting Features
+- **US-002** As a user, I want reporting similar to Competitor X, so that I can have comparable insights and functionality.
+  - Priority: Not stated
+  - Source: REQ-002
+  - Acceptance Criteria:
+    - [ ] Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""completed""]",,t-234a2a11-2782-4c7a-89e1-f80949318445,[],,,
+13a34e9e-28ee-4cbc-ab7c-6de440152fab,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,GENERATION,Agent 2 · PRD Generator,35:48.2,35:49.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""174"",""output"":""231"",""total"":""405""}","{""input"":0.000435,""output"":0.00231,""total"":0.002745}",0.002745,"{""input_assessment"":""PARTIAL"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""better reporting"",""type"":""FUNCTIONAL"",""quote"":""We need better reporting."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""reporting similar to Competitor X"",""type"":""FUNCTIONAL"",""quote"":""Something like what Competitor X has."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                        | Priority   | Source  |
+|--------|------------------------------------|------------|---------|
+| REQ-001| better reporting                   | Not stated | REQ-001 |
+| REQ-002| reporting similar to Competitor X  | Not stated | REQ-002 |
+
+### 4.2 Non-Functional Requirements
+
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""completed""]",,t-234a2a11-2782-4c7a-89e1-f80949318445,[],,,
+bc3f3b72-a2b5-4a19-bb67-7b7ad1f40315,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,35:48.2,35:49.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""65"",""output"":""706"",""total"":""771""}","{""input"":0.00000975,""output"":0.0004236,""total"":0.00043335}",0.00043335,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: unassigned)*
+   - Why this matters: Without clear success metrics, we cannot evaluate the effectiveness of the project post-launch.
+   - What was said: ""success metrics""
+
+2. **User Personas** - Who are the target user personas for this project? *(Ask: unassigned)*
+   - Why this matters: Understanding user personas is crucial for tailoring the product to meet their needs.
+   - What was said: ""user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: unassigned)*
+   - Why this matters: A clear business goal will guide the project’s direction and priorities.
+   - What was said: ""business goal""
+
+4. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: unassigned)*
+   - Why this matters: Defining what is out of scope helps prevent scope creep and keeps the project focused.
+   - What was said: ""out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the project timeline or deliverables? *(Ask: unassigned)*
+   - Why this matters: Identifying dependencies is essential for effective project planning and risk management.
+   - What was said: ""dependencies""
+
+6. **Assumptions** - What assumptions are we making that could affect the project’s success? *(Ask: unassigned)*
+   - Why this matters: Understanding assumptions helps in risk assessment and planning for contingencies.
+   - What was said: ""assumptions""
+
+7. **Timeline** - What is the expected timeline for the project, including key milestones? *(Ask: unassigned)*
+   - Why this matters: A clear timeline is necessary for resource allocation and project management.
+   - What was said: ""timeline""
+
+8. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: unassigned)*
+   - Why this matters: Non-functional requirements are critical for ensuring the product meets performance and usability standards.
+   - What was said: ""non-functional requirements""
+
+9. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: unassigned)*
+   - Why this matters: Clear acceptance criteria are essential for determining when the project is complete and meets stakeholder expectations.
+   - What was said: ""acceptance criteria""
+
+## Clarifying Questions
+1. **User Personas** - Can we discuss the characteristics and needs of the user personas we are targeting? *(Ask: unassigned)*
+   - What was said: ""user personas""
+
+2. **Business Goal** - Can we elaborate on how this project aligns with our overall business strategy? *(Ask: unassigned)*
+   - What was said: ""business goal""
+
+## Unresolved Conflicts
+- There are no identified conflicts at this time.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""completed""]",,t-234a2a11-2782-4c7a-89e1-f80949318445,[],,,
+56881faa-258e-4949-a3c5-ca50e9cbc063,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,SPAN,Guardrail · sufficiency gate,35:47.5,35:47.6,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 2 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":2}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""completed""]",,t-234a2a11-2782-4c7a-89e1-f80949318445,[],,,
+7538bca1-4284-4188-bc3c-c6f37d1f0b37,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,SPAN,Guardrail · quote validation,35:47.4,35:47.5,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":2}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""PARTIAL"",""chat"",""completed""]",,t-234a2a11-2782-4c7a-89e1-f80949318445,[],,,
+6f7575f7-eb8d-4b5d-b813-4eb38237b73a,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,35:46.2,35:47.2,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""16"",""output"":""174"",""total"":""190""}","{""input"":0.0000024,""output"":0.0001044,""total"":0.0001068}",0.0001068,We need better reporting. Something like what Competitor X has.,"{""input_assessment"":""PARTIAL"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""better reporting"",""type"":""FUNCTIONAL"",""quote"":""We need better reporting."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""reporting similar to Competitor X"",""type"":""FUNCTIONAL"",""quote"":""Something like what Competitor X has."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[],""personas"":[],""constraints"":[],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""timeline"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""PARTIAL"",""chat"",""completed""]",,t-234a2a11-2782-4c7a-89e1-f80949318445,[],,,
+t-234a2a11-2782-4c7a-89e1-f80949318445,234a2a11-2782-4c7a-89e1-f80949318445,PRD Genie,SPAN,PRD Genie,35:46.2,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,We need better reporting. Something like what Competitor X has.,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                        | Priority   | Source  |
+|--------|------------------------------------|------------|---------|
+| REQ-001| better reporting                   | Not stated | REQ-001 |
+| REQ-002| reporting similar to Competitor X  | Not stated | REQ-002 |
+
+### 4.2 Non-Functional Requirements
+
+Not discussed in this meeting.
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+Not discussed in this meeting.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",,,"[""PARTIAL"",""chat"",""completed""]",,,[],,,
+50d5bb53-a40a-4a61-bacb-193692b7350c,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,GENERATION,Agent 3 · Story Breakdown,34:27.8,34:28.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""303"",""output"":""86"",""total"":""389""}","{""input"":0.0007575,""output"":0.00086,""total"":0.0016175}",0.0016175,"# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | UNKNOWN  | UNKNOWN|
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+- Deadline for the project: Q3.","## Epic 1: Report Filtering
+
+### Feature 1.1: Filter Reports
+- **US-001** As a user, I want to filter reports by date range, category, and status, so that I can view specific data sets.
+  - Priority: Not stated
+  - Source: REQ-001
+  - Acceptance Criteria:
+    - [ ] The user should be able to filter reports by date range, category, and status.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-784e3f65-c1c4-4c73-aff4-028f4e06105e,[],,,
+4aa9eaca-9344-4bea-8885-6cc6933769a0,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,GENERATION,Agent 2 · PRD Generator,34:25.8,34:26.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,b9854a5c92dc496b997d99d20,gpt-4o,"{""temperature"":0}","{""input"":""238"",""output"":""303"",""total"":""541""}","{""input"":0.000595,""output"":0.00303,""total"":0.003625}",0.003625,"{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The user should be able to filter reports by date range, category, and status."",""type"":""FUNCTIONAL"",""quote"":""The user should be able to filter reports by date range, category, and status."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Results must load in under 2 seconds."",""type"":""NON_FUNCTIONAL"",""quote"":""Results must load in under 2 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}],""personas"":[],""constraints"":[{""constraint"":""Deadline for the project."",""quote"":""Deadline: Q3."",""category"":""TIMELINE""}],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | UNKNOWN  | UNKNOWN|
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+- Deadline for the project: Q3.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-784e3f65-c1c4-4c73-aff4-028f4e06105e,[],,,
+aaa6ac3d-35c1-4504-8e98-a20eba6451fb,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,GENERATION,Agent 4 · Gap Analyzer,34:25.8,34:26.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""76"",""output"":""626"",""total"":""702""}","{""input"":0.0000114,""output"":0.0003756,""total"":0.000387}",0.000387,"{""ambiguous_items"":[],""contradictions"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}]}","## Blocking Questions
+1. **Success Metrics** - What specific metrics will we use to measure the success of this project? *(Ask: Sarah)*
+   - Why this matters: Defining success metrics is crucial for evaluating the project's effectiveness.
+   - What was said: ""not discussed: success metrics""
+
+2. **User Personas** - Who are the target user personas for this project? *(Ask: Sarah)*
+   - Why this matters: Understanding user personas is essential for tailoring the product to meet user needs.
+   - What was said: ""not discussed: user personas""
+
+3. **Business Goal** - What is the primary business goal we aim to achieve with this project? *(Ask: Sarah)*
+   - Why this matters: A clear business goal will guide the project's direction and priorities.
+   - What was said: ""not discussed: business goal""
+
+4. **Out of Scope** - What elements are explicitly out of scope for this project? *(Ask: Sarah)*
+   - Why this matters: Defining out-of-scope items helps prevent scope creep and keeps the project focused.
+   - What was said: ""not discussed: out of scope""
+
+5. **Dependencies** - What dependencies exist that could impact the project's timeline or execution? *(Ask: Sarah)*
+   - Why this matters: Identifying dependencies is critical for effective project planning and risk management.
+   - What was said: ""not discussed: dependencies""
+
+6. **Assumptions** - What assumptions are we making that could affect the project's outcome? *(Ask: Sarah)*
+   - Why this matters: Clarifying assumptions helps in understanding potential risks and challenges.
+   - What was said: ""not discussed: assumptions""
+
+7. **Non-Functional Requirements** - What non-functional requirements should we consider for this project? *(Ask: Sarah)*
+   - Why this matters: Non-functional requirements are essential for ensuring the product meets quality standards.
+   - What was said: ""not discussed: non-functional requirements""
+
+8. **Acceptance Criteria** - What are the acceptance criteria for this project? *(Ask: Sarah)*
+   - Why this matters: Clear acceptance criteria are necessary for determining when the project is complete and meets expectations.
+   - What was said: ""not discussed: acceptance criteria""
+
+## Clarifying Questions
+1. **Project Timeline** - Can we clarify the specific milestones and deadlines leading up to Q3? *(Ask: Sarah)*
+   - Why this matters: Understanding the timeline will help in planning and resource allocation.
+
+## Unresolved Conflicts
+- No unresolved conflicts were identified in the extraction.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-784e3f65-c1c4-4c73-aff4-028f4e06105e,[],,,
+78cab711-52d4-4bd4-8a62-696e30fa4429,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,SPAN,Guardrail · sufficiency gate,34:25.1,34:25.1,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,PASSED — 2 stated requirement(s),,,,,,{},{},{},0,"{""stated_count"":2}","{""proceeded"":true}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-784e3f65-c1c4-4c73-aff4-028f4e06105e,[],,,
+097c999f-cf51-47a2-99a8-7e6afe9a02af,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,SPAN,Guardrail · quote validation,34:25.0,34:25.0,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,0 unsupported item(s) dropped,,,,,,{},{},{},0,"{""stated_items_kept"":2}","{""dropped"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",50,,"[""DETAILED"",""chat"",""completed""]",,t-784e3f65-c1c4-4c73-aff4-028f4e06105e,[],,,
+4146278f-5293-486b-9021-b10e6674465f,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,GENERATION,Agent 1 · Requirement Extractor,34:23.8,34:24.8,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,clyrjp56f0000t0mzapoocd7u,gpt-4o-mini,"{""temperature"":0}","{""input"":""36"",""output"":""238"",""total"":""274""}","{""input"":0.0000054,""output"":0.0001428,""total"":0.0001482}",0.0001482,"The user should be able to filter reports by date range, category, and status. Results must load in under 2 seconds. PM: Sarah. Deadline: Q3.","{""input_assessment"":""DETAILED"",""stated_requirements"":[{""id"":""REQ-001"",""requirement"":""The user should be able to filter reports by date range, category, and status."",""type"":""FUNCTIONAL"",""quote"":""The user should be able to filter reports by date range, category, and status."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]},{""id"":""REQ-002"",""requirement"":""Results must load in under 2 seconds."",""type"":""NON_FUNCTIONAL"",""quote"":""Results must load in under 2 seconds."",""speaker"":""UNKNOWN"",""acceptance_criteria"":[]}],""ambiguous_items"":[],""contradictions"":[],""stakeholders"":[{""name"":""Sarah"",""role"":""PM"",""position"":""Deadline: Q3.""}],""personas"":[],""constraints"":[{""constraint"":""Deadline for the project."",""quote"":""Deadline: Q3."",""category"":""TIMELINE""}],""dependencies"":[],""not_discussed"":[""success metrics"",""user personas"",""business goal"",""out of scope"",""dependencies"",""assumptions"",""non-functional requirements"",""acceptance criteria""],""missing_information"":[]}","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",1000,,"[""DETAILED"",""chat"",""completed""]",,t-784e3f65-c1c4-4c73-aff4-028f4e06105e,[],,,
+t-784e3f65-c1c4-4c73-aff4-028f4e06105e,784e3f65-c1c4-4c73-aff4-028f4e06105e,PRD Genie,SPAN,PRD Genie,34:23.8,,,default,,,96dfeb36f1a4432eae44b509d2854516,DEFAULT,,,,,,,{},{},{},0,"The user should be able to filter reports by date range, category, and status. Results must load in under 2 seconds. PM: Sarah. Deadline: Q3.","# Product Requirements Document
+
+## 1. Product Overview
+Not discussed in this meeting.
+
+## 2. Goals and Objectives
+Not discussed in this meeting.
+
+## 3. User Personas
+Not discussed in this meeting.
+
+## 4. Feature Requirements
+
+### 4.1 Functional Requirements
+
+| ID     | Requirement                                                   | Priority   | Source  |
+|--------|---------------------------------------------------------------|------------|---------|
+| REQ-001| The user should be able to filter reports by date range, category, and status. | Not stated | REQ-001 |
+
+### 4.2 Non-Functional Requirements
+
+| ID     | Requirement                          | Category | Target |
+|--------|--------------------------------------|----------|--------|
+| REQ-002| Results must load in under 2 seconds. | UNKNOWN  | UNKNOWN|
+
+## 5. Acceptance Criteria
+Not discussed in this meeting.
+
+## 6. Out of Scope
+Not discussed in this meeting.
+
+## 7. Dependencies
+
+| Dependency | Owner | Status | Risk |
+|------------|-------|--------|------|
+Not discussed in this meeting.
+
+## 8. Assumptions
+Not discussed in this meeting.
+
+## 9. Open Questions
+Not discussed in this meeting.
+
+## 10. Timeline
+- Deadline for the project: Q3.","{""halted_at_sufficiency_gate"":""false"",""unsupported_items_dropped"":""0"",""contradiction_count"":""0"",""ambiguous_count"":""0"",""stated_count"":""2"",""test_id"":""chat""}",,,"[""DETAILED"",""chat"",""completed""]",,,[],,,

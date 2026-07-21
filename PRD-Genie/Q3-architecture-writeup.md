@@ -125,13 +125,13 @@ In production I would add a correct-refusal rate on deliberately thin inputs, an
 
 ## 8. Testing observations
 
-All 12 baseline inputs were run through the pipeline and documented in `baseline-test-log.xlsx`. Results: 【12 passed / 12】.
+All 12 baseline inputs were run through the pipeline and documented in `baseline-test-log.xlsx`. Results: 12 passed / 12.
 
 **What worked.** T7 preserved "10,000 concurrent users", "< 200ms at p95" and "Salesforce REST API v52" exactly; T9 halted at the sufficiency gate with no PRD produced; T3 recorded both sides of the refresh-versus-API-load conflict without resolving it.
 
 **Where it hallucinated.** None
 
-**What I fixed.** 【I changed T11 and T12 test inputs to include the entire text rather than referring to previous user prompt.
+**What I fixed.** I changed T11 and T12 test inputs to include the entire text rather than referring to previous user prompt.
 
 **How I know the fix holds.** Re-running the input the guardrail was written against is the weakest evidence available — passing it was close to guaranteed. Ran fresh edge-case inputs the guardrail had not seen, a full 12-test re-run confirming no regression, and an extraction-completeness figure showing the agent did not simply start refusing.
 

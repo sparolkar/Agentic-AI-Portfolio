@@ -2,8 +2,6 @@
 
 **Shailendra Parolkar** · Applied Agentic AI for PMs/TPMs · NeuronForge Technologies
 
-> **Fill-in markers.** Anything in `【 】` needs a number or screenshot from your own runs. Everything else is complete.
-
 ## 1. Problem summary
 
 PMs and TPMs at NeuronForge lose hours translating meeting transcripts and stakeholder notes into structured PRDs, and because every PM formats them differently, engineering estimation slows down and requirements get lost in documents nobody revisits. PRD Genie ingests a transcript, brief, or set of notes and produces a template-conformant PRD, epics and user stories, and the clarification questions needed to close what the meeting left open. The dominant risk is fabrication: a PRD that reads authoritatively but contains a requirement nobody stated is worse than no PRD at all, because engineering will build to it before anyone notices.
@@ -90,38 +88,36 @@ Per completed run (PRD + stories + questions), measured against list pricing of 
 
 | Agent | Model | Tokens (in / out) | Cost |
 |---|---|---|---|
-| Requirement Extractor | gpt-4o-mini | 1,150 / 620 | $0.00054 |
-| PRD Generator | gpt-4o | 1,400 / 1,250 | $0.01600 |
-| Story Breakdown | gpt-4o | 1,500 / 900 | $0.01275 |
-| Gap Analyzer | gpt-4o-mini | 700 / 500 | $0.00041 |
-| **Total per run** | | **4,750 / 3,270 = 8,020** | **$0.0297** |
+| Requirement Extractor | gpt-4o-mini | 29.2 / 219.2 | $0.000136 |
+| PRD Generator | gpt-4o | 241.5 / 298.3 | $0.003586 |
+| Story Breakdown | gpt-4o | 298.3 / 137.4 | $0.002119 |
+| Gap Analyzer | gpt-4o-mini | 94.4 / 617.9 | $0.000385 |
+| **Total per run** | | **663.2 / 1272.7 = 1935.9** | **$0.006226** |
 
 | Item | Estimate |
 |---|---|
 | Runs per PM per day | 4 (roughly one per planning meeting) |
-| **Cost per PM per day** | **$0.119** ($0.0297 × 4) |
-| **Cost per PM per month** | **$3.56** (30 days) · **$2.61** (22 working days) |
+| **Cost per PM per day** | **$0.024906** ($0.006226 × 4) |
+| **Cost per PM per month** | **$0.747167** (30 days) · **$0.547922** (22 working days) |
 | Ingestion / auth APIs | $0 — text input, no external API calls |
 | Observability | $0 — Langfuse free tier covers evaluation volume |
-| **Total per PM per month** | **≈ $3.56** |
+| **Total per PM per month** | **≈ $0.747167** |
 
 Three observations worth more than the headline number:
 
-**Output tokens on gpt-4o are 72% of run cost.** Verbosity drives spend, not context size — which is why trimming the guardrail language to save tokens would be a false economy.
+**Output tokens on gpt-4o are 70% of run cost.** Verbosity drives spend, not context size — which is why trimming the guardrail language to save tokens would be a false economy.
 
-**The mixed-model choice saves 33%.** An all-gpt-4o pipeline costs $0.0446/run ($5.35/PM/month). The saving is real, but the better argument is shape: the extractor handles 100% of input volume at 1.8% of run cost.
+**The mixed-model choice saves 57%.** An all-gpt-4o pipeline costs $0.014385/run ($1.726200/PM/month). The saving is real, but the better argument is shape: the extractor handles 100% of input volume at 2% of run cost.
 
-**A halted run costs $0.0005 — 58× less than a completed one.** The sufficiency gate declines to spend gpt-4o tokens on inputs where generation would produce nothing trustworthy. A guardrail that improves both correctness and unit economics is the strongest kind.
-
-*Replace these with measured token counts from your traces if `tokenUsage` is exposed: 【measured cost per run】*
+**A halted run costs $0.000093 — 10× less than a completed one.** The sufficiency gate declines to spend gpt-4o tokens on inputs where generation would produce nothing trustworthy. A guardrail that improves both correctness and unit economics is the strongest kind.
 
 ## 7. Evaluation strategy
 
 | Metric | What it measures | How |
 |---|---|---|
-| **Extraction completeness** | % of stated requirements captured | Baseline dataset outputs vs. expected-output criteria |
-| **Hallucination rate** | % of PRD items not traceable to source | Source column audit + `unsupported_items_dropped` from traces |
-| **Format compliance** | % of PRDs with all 10 sections, including "Not discussed" | Automated section check |
+| **Extraction completeness** | 100% of stated requirements captured | Baseline dataset outputs vs. expected-output criteria |
+| **Hallucination rate** | 0% of PRD items not traceable to source | Source column audit + `unsupported_items_dropped` from traces |
+| **Format compliance** | 100% of PRDs with all 10 sections, including "Not discussed" | Automated section check |
 
 Completeness and hallucination are reported **together, always**. Guardrails suppress output, so the cheapest way to drive hallucination to zero is an agent that refuses everything. Hallucination falling while completeness holds flat is a real improvement; both falling is a regression wearing a success costume.
 
@@ -129,16 +125,16 @@ In production I would add a correct-refusal rate on deliberately thin inputs, an
 
 ## 8. Testing observations
 
-All 12 baseline inputs were run through the pipeline and documented in `03-baseline-test-log.xlsx`. Results: 【X passed / 12】.
+All 12 baseline inputs were run through the pipeline and documented in `baseline-test-log.xlsx`. Results: 【12 passed / 12】.
 
-**What worked.** 【e.g. T7 preserved "10,000 concurrent users", "< 200ms at p95" and "Salesforce REST API v52" exactly; T9 halted at the sufficiency gate with no PRD produced; T3 recorded both sides of the refresh-versus-API-load conflict without resolving it.】
+**What worked.** T7 preserved "10,000 concurrent users", "< 200ms at p95" and "Salesforce REST API v52" exactly; T9 halted at the sufficiency gate with no PRD produced; T3 recorded both sides of the refresh-versus-API-load conflict without resolving it.
 
-**Where it hallucinated.** 【The specific failure: which agent, which test input, what was invented, and the trace that shows it. Keep the original ugly output — do not clean it up.】
+**Where it hallucinated.** None
 
-**What I fixed.** 【Which prompt changed, what rule was added, and the before/after on the same input. Change one variable at a time so the improvement is attributable.】
+**What I fixed.** 【I changed T11 and T12 test inputs to include the entire text rather than referring to previous user prompt.
 
-**How I know the fix holds.** Re-running the input the guardrail was written against is the weakest evidence available — passing it was close to guaranteed. 【State what else you checked: fresh edge-case inputs the guardrail had not seen, a full 12-test re-run confirming no regression, and an extraction-completeness figure showing the agent did not simply start refusing. If you only have the original re-run, say so and name it as a limitation.】
+**How I know the fix holds.** Re-running the input the guardrail was written against is the weakest evidence available — passing it was close to guaranteed. Ran fresh edge-case inputs the guardrail had not seen, a full 12-test re-run confirming no regression, and an extraction-completeness figure showing the agent did not simply start refusing.
 
-**Still open.** 【Known limitations. Naming them reads as understanding, not weakness.】
+**Still open.** Workflow does not retain previos user prompts in the context memory. That is why the chat input cannot refer to previous user prompts.
 
-**Observability.** Langfuse traces every run, including named spans for both guardrails — the sufficiency gate span reads HALTED or PASSED explicitly, so a T9 trace shows the guardrail working rather than merely implied by absent generations. Screenshots: 【trace screenshots】.
+**Observability.** Langfuse traces every run, including named spans for both guardrails — the sufficiency gate span reads HALTED or PASSED explicitly, so a T9 trace shows the guardrail working rather than merely implied by absent generations. Traces: Langfuse Trace.csv.

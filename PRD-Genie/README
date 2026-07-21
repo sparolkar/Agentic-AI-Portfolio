@@ -45,13 +45,13 @@ The PRD template's **Source column** carries a requirement ID for every function
 
 | File | What it is |
 |---|---|
-| `08-prd-genie-workflow-chat-langfuse.json` | **The workflow.** Import into n8n. |
-| `01-design-steps-1-to-3.md` | Design rationale, agent specs, Mermaid architecture diagram |
-| `02-agent-prompts.md` | All four system prompts with the reasoning behind each guardrail |
-| `03-baseline-test-log.xlsx` | Baseline dataset results, T1–T12 |
-| `05-setup-and-observability.md` | Import and setup notes |
-| `07-langfuse-integration.md` | Langfuse integration, both paths |
-| `09-Q1-ideation.md` · `10-Q2-program-charter.md` · `11-Q3-architecture-writeup.md` · `12-Q4-reflection.md` | Assignment answers |
+| `prd-genie-workflow-chat-langfuse.json` | **The workflow.** Import into n8n. |
+| `design-steps-1-to-3.md` | Design rationale, agent specs, Mermaid architecture diagram |
+| `agent-prompts.md` | All four system prompts with the reasoning behind each guardrail |
+| `baseline-test-log.xlsx` | Baseline dataset results, T1–T12 |
+| `setup-and-observability.md` | Import and setup notes |
+| `langfuse-integration.md` | Langfuse integration, both paths |
+| `Q1-ideation.md` · `10-Q2-program-charter.md` · `11-Q3-architecture-writeup.md` · `12-Q4-reflection.md` | Assignment answers |
 | `screenshots/` | Canvas, system in action, Langfuse traces |
 
 ## Setup

@@ -2,6 +2,8 @@
 
 Capstone · Applied Agentic AI for PMs/TPMs · **Shailendra Parolkar**
 
+**Repository:** https://github.com/sparolkar/Agentic-AI-Portfolio/tree/main/PRD%20Genie
+
 PRD Genie turns a product request into a structured PRD, epics and user stories, and the clarification questions the request left open — and refuses to generate a PRD when the request doesn't support one. Built in n8n Cloud with a four-agent sequential pipeline, scored by three metrics, and traced in Langfuse.
 
 ## The problem

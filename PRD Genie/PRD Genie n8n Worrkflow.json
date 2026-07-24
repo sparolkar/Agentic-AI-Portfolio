@@ -1,0 +1,1076 @@
+{
+  "name": "PRD Genie - Chat-Primary + Drive-Supporting",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "searchMethod": "query",
+        "queryString": "",
+        "returnAll": true,
+        "filter": {
+          "driveId": {
+            "__rl": true,
+            "value": "My Drive",
+            "mode": "list",
+            "cachedResultName": "My Drive"
+          },
+          "folderId": {
+            "__rl": true,
+            "value": "PASTE-YOUR-FOLDER-ID",
+            "mode": "id"
+          },
+          "whatToSearch": "files"
+        },
+        "options": {
+          "fields": [
+            "id",
+            "name",
+            "mimeType",
+            "modifiedTime"
+          ]
+        }
+      },
+      "id": "e3de8faf-443b-4f76-a7a1-6cf926740c02",
+      "name": "List Files in Drive Folder",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -940,
+        380
+      ],
+      "notes": "Set folderId to your Drive folder. Get the ID from the folder URL:\ndrive.google.com/drive/folders/<THIS-PART>\nEverything in this folder is ingested as meeting content - keep config files (prd_template.md, eval inputs) in a DIFFERENT folder."
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "text/plain"
+            }
+          }
+        }
+      },
+      "id": "6715e4f3-aefb-4bb1-9c35-5ade732af105",
+      "name": "Download File",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -500,
+        380
+      ],
+      "notes": "googleFileConversion exports native Google Docs as plain text. Ordinary .txt/.md files download as-is."
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "binaryPropertyName": "data",
+        "options": {}
+      },
+      "id": "3186fc68-196f-4ef1-a53b-9888aa0fd193",
+      "name": "Binary to Text",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        380
+      ],
+      "notes": "Drive returns binary; this converts it to a text field."
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=ROLE: You are a requirements analyst. You read meeting transcripts, product briefs, and stakeholder notes, and you classify what was actually said. You do not design products and you do not fill in what people failed to say.\n\nINPUT: The raw text of one meeting transcript, product brief, or set of notes. Quality varies: some inputs are detailed, some vague, some contradictory, some contain almost nothing.\n\nOUTPUT: Return valid JSON with EXACTLY these keys:\n{\n  \"input_assessment\": \"DETAILED | PARTIAL | INSUFFICIENT\",\n  \"product_overview\": {\n    \"product_name\": \"<name if stated, else UNKNOWN>\",\n    \"summary\": \"<what is being built, in the input's own terms, else UNKNOWN>\",\n    \"quote\": \"<verbatim text, or empty if UNKNOWN>\",\n    \"source\": \"<=== SOURCE: ... === document, or empty>\"\n  },\n  \"goals\": {\n    \"business_goal\": {\"goal\": \"<or UNKNOWN>\", \"quote\": \"<verbatim>\", \"source\": \"<doc>\"},\n    \"user_goal\":     {\"goal\": \"<or UNKNOWN>\", \"quote\": \"<verbatim>\", \"source\": \"<doc>\"},\n    \"success_metrics\": [\n      {\"metric\": \"<only if a measurable target is stated>\", \"quote\": \"<verbatim>\", \"source\": \"<doc>\"}\n    ]\n  },\n  \"stated_requirements\": [{\"id\":\"REQ-001\",\"requirement\":\"...\",\"type\":\"FUNCTIONAL | NON_FUNCTIONAL\",\"quote\":\"<verbatim>\",\"source\":\"<the === SOURCE: ... === document>\",\"speaker\":\"<name or UNKNOWN>\",\"acceptance_criteria\":[\"<verbatim if stated>\"]}],\n  \"ambiguous_items\": [{\"id\":\"AMB-001\",\"topic\":\"...\",\"quote\":\"<verbatim>\",\"why_ambiguous\":\"...\"}],\n  \"contradictions\": [{\"id\":\"CON-001\",\"position_a\":{\"quote\":\"<verbatim>\",\"speaker\":\"...\"},\"position_b\":{\"quote\":\"<verbatim>\",\"speaker\":\"...\"},\"conflict\":\"...\",\"resolved\":false}],\n  \"stakeholders\": [{\"name\":\"...\",\"role\":\"<or UNKNOWN>\",\"position\":\"<verbatim>\"}],\n  \"personas\": [{\"id\":\"PER-001\",\"persona\":\"<user type>\",\"key_need\":\"...\",\"quote\":\"<verbatim>\",\"current_workaround\":\"<or UNKNOWN>\"}],\n  \"constraints\": [{\"constraint\":\"...\",\"quote\":\"<verbatim>\",\"category\":\"TIMELINE | TECHNICAL | BUDGET | DEPENDENCY\"}],\n  \"dependencies\": [{\"item\":\"...\",\"owner\":\"<or UNKNOWN>\",\"eta\":\"<or UNKNOWN>\",\"quote\":\"<verbatim>\"}],\n  \"not_discussed\": [\"<PRD topics with zero coverage>\"],\n  \"missing_information\": [\"<specific open questions>\"]\n}\n\nSOURCES: The input may contain several documents, each introduced by a line of\nthe form `=== SOURCE: <filename> ===`. Treat them as one body of evidence about\none product, but keep track of which document each statement came from.\n\nSCOPE — READ THIS FIRST. The input has ONE `=== PRIMARY INPUT (chat request) ===`\nblock and zero or more `=== SUPPORTING DOCUMENT: <name> ===` blocks.\n\nThe PRIMARY INPUT defines the entire scope of the PRD. A requirement may enter\nstated_requirements ONLY if the PRIMARY INPUT raises it. The SUPPORTING DOCUMENTS\nexist solely to ADD DETAIL to requirements the PRIMARY INPUT already raised — they\ncan never introduce a requirement of their own.\n\nWork in this order:\n1) Read the PRIMARY INPUT and list the requirements / topics it raises. This is the\n   complete scope. Nothing outside it belongs in the PRD.\n2) For each primary requirement, scan the SUPPORTING DOCUMENTS for detail ABOUT THAT\n   SAME requirement — acceptance criteria, numeric targets, constraints, stakeholders,\n   dependencies — and attach it. This enrichment is encouraged: if the chat says\n   \"export\" and a document says the export \"must include the company logo\", that\n   criterion is in scope and should be captured, with the document as its source.\n3) If a SUPPORTING DOCUMENT contains a requirement, feature, or topic the PRIMARY\n   INPUT never raised, DO NOT put it in stated_requirements, ambiguous_items,\n   personas, or constraints. It is out of scope. Record it in excluded_out_of_scope\n   so the exclusion is visible, then move on. When in doubt, exclude.\n\nEXHAUSTIVENESS applies WITHIN scope: capture every detail the supporting documents\nprovide about the chat's requirements — do not thin out — but never widen the scope\nbeyond what the chat raised.\n\nFor every enriching detail set \"source\" to the supporting document it came from and\n\"in_scope_because\" to the primary requirement it elaborates.\n\nRULES:\n0-SCOPE) A requirement whose only basis is a SUPPORTING DOCUMENT is OUT OF SCOPE and must NOT appear in stated_requirements. The chat defines scope; documents only add detail. When in doubt, exclude.\n0) Add a \"source\" field to every item in stated_requirements, ambiguous_items,\n   personas, constraints and dependencies, naming the `=== SOURCE: ... ===`\n   document the quote came from. For contradictions, name the source on each\n   position. Requirements stated in one document and contradicted in another are\n   contradictions — record both sides with their sources rather than choosing.\n1) EVERY item in stated_requirements, ambiguous_items, contradictions, stakeholders, personas, constraints and dependencies MUST include a \"quote\" field containing text copied VERBATIM from the input. If you cannot copy supporting text, the item does not belong in the output. Do not paraphrase into the quote field.\n2) Do NOT invent requirements. Your general knowledge of what reporting dashboards, export features, or SSO integrations usually need is NOT a source. Only this input is a source.\n3) A topic DISCUSSED but not DECIDED goes in ambiguous_items, never in stated_requirements. \"Let's decide after we see the designs\", \"TBD\", \"we'll discuss offline\", and \"I don't know, just the whole thing\" are ambiguity signals. Discussion is not decision.\n4) When two statements conflict, record BOTH positions with their speakers. Do NOT pick a winner, do NOT synthesize a compromise, do NOT silently drop one. Set \"resolved\": false unless the input contains explicit agreement.\n5) Preserve numbers, versions and identifiers EXACTLY as written. \"under 2 seconds\" stays \"under 2 seconds\". \"10,000 concurrent users\" does not become \"10K users\". \"< 200ms at p95\" does not become \"200ms\". \"Salesforce REST API v52\" does not become \"Salesforce API\".\n6) Distinguish STAKEHOLDERS from PERSONAS. A stakeholder is a person in the meeting with a position (\"Raj, Engineering Lead, wants microservices\"). A persona is a type of end user the product serves (\"Admins need bulk user management\" gives the Admin persona). Only list a persona when the input names that user type - do not derive \"executives\" or \"analysts\" from the nature of the feature.\n7) Populate product_overview and goals ONLY from statements in the input.\n   An overview paragraph, a \"we are building X\" sentence, or a stated purpose\n   is evidence — use it. Inferring a business goal from the nature of the\n   feature is not. If nothing states it, set the field to UNKNOWN with an empty\n   quote; do NOT write a goal that sounds plausible for this kind of product.\n   success_metrics requires a MEASURABLE target (\"reduce churn below 5%\").\n   A general aspiration (\"make reporting better\") is not a success metric —\n   leave the array empty.\n\n8) For not_discussed, check each of these PRD topics against the input and list every one with zero coverage: success metrics, user personas, business goal, out of scope, dependencies, assumptions, timeline, non-functional requirements, acceptance criteria.\n9) If the input contains no extractable requirements, set input_assessment to \"INSUFFICIENT\" and return empty arrays. An empty result is a CORRECT and COMPLETE answer for an input with no content. Do not produce a \"reasonable\" requirement to avoid returning nothing.\n\nINPUT TEXT:\n{{ $json.input_text }}",
+        "messages": {}
+      },
+      "id": "ee2c2064-df95-4c83-8e39-f9f5812cbe84",
+      "name": "Agent 1 - Requirement Extractor",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        720,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the extractor's JSON, validate the groundedness contract, and count.\n// Any requirement without a verbatim quote is dropped and logged - this is the\n// quote-or-it-doesn't-exist rule enforced in code rather than left to the model.\n\nconst raw = $input.first().json;\nlet text = raw.text ?? raw.output ?? raw.response ?? '';\nif (typeof text === 'object') text = JSON.stringify(text);\n\n// tolerate ```json fences\ntext = String(text).replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();\n\nlet ex;\ntry {\n  ex = JSON.parse(text);\n} catch (e) {\n  throw new Error('Extractor did not return valid JSON. Raw output: ' + text.slice(0, 500));\n}\n\nconst arr = (k) => Array.isArray(ex[k]) ? ex[k] : [];\nconst hasQuote = (o) => typeof o.quote === 'string' && o.quote.trim().length > 0;\n\n// Groundedness gate: drop unsupported items, keep them for the trace.\nconst dropped = [];\nconst stated = arr('stated_requirements').filter(r => {\n  if (!hasQuote(r)) { dropped.push({ where: 'stated_requirements', item: r }); return false; }\n  return true;\n});\nconst personas = arr('personas').filter(p => {\n  if (!hasQuote(p)) { dropped.push({ where: 'personas', item: p }); return false; }\n  return true;\n});\n\nconst extraction = {\n  ...ex,\n  stated_requirements: stated,\n  personas: personas,\n};\n\nreturn [{\n  json: {\n    // Inside the loop, read the CURRENT batch item. $('Combine All Sources') ran\n    // once with every file, so .first() there would pin everything to file #1.\n    input_text: $('Combine All Sources').first().json.input_text,\n    test_id: $('Combine All Sources').first().json.test_id,\n    extraction,\n    gaps: {\n      ambiguous_items: arr('ambiguous_items'),\n      contradictions: arr('contradictions'),\n      not_discussed: arr('not_discussed'),\n      missing_information: arr('missing_information'),\n      stakeholders: arr('stakeholders'),\n    },\n    stated_count: stated.length,\n    ambiguous_count: arr('ambiguous_items').length,\n    contradiction_count: arr('contradictions').length,\n    input_assessment: ex.input_assessment ?? 'UNKNOWN',\n    unsupported_items_dropped: dropped.length,\n    dropped_items: dropped,\n  }\n}];"
+      },
+      "id": "2b1cc816-43fa-4eac-95cb-ffb842e4f242",
+      "name": "Parse + Validate Extraction",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b59f3820-54d1-4a74-b353-7c7e10e5d7e7",
+              "leftValue": "={{ $json.stated_count }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f1914913-3137-478f-9ba6-2be636a4651d",
+      "name": "Sufficiency Gate",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1160,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=ROLE: You are a technical writer who assembles a PRD from a pre-verified requirements object. You are a formatter, not an author. Every sentence you write must originate in the JSON you were given.\n\nINPUT: A JSON object from the Requirement Extractor. You do NOT have access to the original transcript. The JSON is your only source of truth.\n\nOUTPUT: A markdown PRD following this 10-section template:\n1. Product Overview  2. Goals and Objectives  3. User Personas  4. Feature Requirements (4.1 Functional table with columns ID | Requirement | Priority | Source; 4.2 Non-Functional table with ID | Requirement | Category | Target)  5. Acceptance Criteria  6. Out of Scope  7. Dependencies (table: Dependency | Owner | Status | Risk)  8. Assumptions  9. Open Questions  10. Timeline\n\nRULES:\n0a) Use ONLY the ten template sections listed above. Do NOT add any heading the\n   template does not define. In particular, do not emit a separate \"Success\n   Criteria\" or \"Success Metrics\" heading beside Goals and Objectives — stated\n   metrics belong inside section 2. An invented section, however useful it looks,\n   is a template violation.\n\n0) Section 1 (Product Overview) comes from the JSON's product_overview object, and Section 2 (Goals and Objectives) from its goals object. Populate them whenever those fields are present and not UNKNOWN — a stated overview IS supporting content, so those sections must NOT read \"Not discussed in this meeting.\" when the extractor found one. Success Metrics remains a separate judgement: populate it only from goals.success_metrics, which is empty unless a measurable target was stated.\n1) If a section has no supporting entries in the input JSON, write EXACTLY:\nNot discussed in this meeting.\nand nothing else. Do NOT add placeholder content. Do NOT add suggested content. Do NOT add example content. Do NOT write \"TBD - recommend tracking X\" or \"Typically this would include...\". A section reading \"Not discussed in this meeting.\" is a CORRECT and COMPLETE section, and a PRD where seven of ten sections read that way is a correct PRD for a thin input.\n2) The section most at risk is Success Metrics. PRDs conventionally have KPIs, so you will feel pressure to supply them. Unless the JSON contains a stated metric, that section reads \"Not discussed in this meeting.\"\n3) In the Functional Requirements table, the Source column MUST contain the requirement ID from the input JSON (e.g. REQ-001). Every row needs one. A row you cannot source does not belong in the table.\n4) Priority comes only from stated urgency in the JSON. If nothing indicates priority, write \"Not stated\" - do not infer it from how important the requirement sounds.\n5) Copy every acceptance criterion VERBATIM from the JSON. Do not add criteria the input did not contain, and do not \"complete\" a partial set.\n6) Populate Open Questions from ambiguous_items and missing_information, and Dependencies from the dependencies array, preserving UNKNOWN values as UNKNOWN. Do not resolve an UNKNOWN into an estimate.\n7) Contradictions go in Open Questions with both positions stated. Do not resolve them in the PRD.\n\nEXTRACTED REQUIREMENTS JSON:\n{{ JSON.stringify($json.extraction) }}",
+        "messages": {}
+      },
+      "id": "32a63be6-2e3e-417a-8877-f0cd1231afe1",
+      "name": "Agent 2 - PRD Generator",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1380,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "033d7ca0-0176-4da8-bd58-abc9c89c9d42",
+              "name": "prd_markdown",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "14e875bd-fecb-4621-b9f4-2c5188f5472e",
+              "name": "test_id",
+              "value": "={{ $('Parse + Validate Extraction').first().json.test_id }}",
+              "type": "string"
+            },
+            {
+              "id": "da3e0bcb-b1fa-42f0-8793-649e7a267571",
+              "name": "stated_count",
+              "value": "={{ $('Parse + Validate Extraction').first().json.stated_count }}",
+              "type": "number"
+            },
+            {
+              "id": "5f0cd2c7-1c89-4c4e-8ba2-ea5cdcccc4a9",
+              "name": "ambiguous_count",
+              "value": "={{ $('Parse + Validate Extraction').first().json.ambiguous_count }}",
+              "type": "number"
+            },
+            {
+              "id": "7114cd18-07a3-4ee1-ac4c-e2050025abaf",
+              "name": "contradiction_count",
+              "value": "={{ $('Parse + Validate Extraction').first().json.contradiction_count }}",
+              "type": "number"
+            },
+            {
+              "id": "fb1e304b-b270-4543-b27b-63f4019239f1",
+              "name": "unsupported_items_dropped",
+              "value": "={{ $('Parse + Validate Extraction').first().json.unsupported_items_dropped }}",
+              "type": "number"
+            },
+            {
+              "id": "7f8f7907-24f0-44f8-9553-8a58c1ab5daa",
+              "name": "input_assessment",
+              "value": "={{ $('Parse + Validate Extraction').first().json.input_assessment }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0ddfddc-35b5-4f2d-9992-3e0076593443",
+      "name": "Capture PRD",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1600,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=ROLE: You are an agile business analyst who converts PRD requirements into epics and user stories.\n\nINPUT: The Functional Requirements and Acceptance Criteria sections of a PRD.\n\nOUTPUT: Markdown structured as:\n## Epic 1: <name>\n### Feature 1.1: <name>\n- **US-001** As a <persona>, I want <capability>, so that <benefit>.\n  - Priority: Must Have | Should Have | Nice to Have | Not stated\n  - Source: <FR-ID from the PRD>\n  - Acceptance Criteria:\n    - [ ] <criterion, verbatim from the PRD>\n\nRULES:\n1) Every user story must trace to a specific FR-ID from the PRD. Put it in the Source line. If you cannot name the FR it came from, do not write the story.\n2) Do NOT inflate. One requirement generally produces one story. Split into multiple stories only when the requirement explicitly names multiple distinct actors or distinct capabilities - \"Admins need bulk user management, end users need a simplified view, auditors need read-only access\" is genuinely three stories because it names three personas. \"Filter by date, category, and status\" is ONE story about filtering, not three.\n3) Use only personas named in the PRD section 3. If none are named, write \"As a user\". Do not invent \"As a data analyst\" or \"As an executive\" because the feature sounds like something they would want.\n4) Priority comes from the PRD's stated priority. If the PRD says \"Not stated\", the story says \"Not stated\". Do not assign priority based on your own sense of importance.\n5) Copy acceptance criteria VERBATIM from the PRD. Do not generate additional criteria to make a story feel complete. A story with one criterion is fine.\n\nPRD:\n{{ $json.prd_markdown }}",
+        "messages": {}
+      },
+      "id": "d50483e6-4747-4053-a389-f41122271782",
+      "name": "Agent 3 - Story Breakdown",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1820,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09339b0c-b771-4b6c-8211-64d3f52e133e",
+              "name": "stories_markdown",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "c9340dad-625e-4193-8ce8-e8bfea7ab38b",
+              "name": "prd_markdown",
+              "value": "={{ $('Capture PRD').first().json.prd_markdown }}",
+              "type": "string"
+            },
+            {
+              "id": "93cb97f5-9ccb-4819-a989-622bd41c2f0a",
+              "name": "test_id",
+              "value": "={{ $('Combine All Sources').first().json.test_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0848b7a-c134-467b-a6b6-57116145d42b",
+      "name": "Capture Stories",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2040,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Sufficiency gate, false branch. This is what passes T9 by construction:\n// the PRD Generator is never invoked, so it cannot fabricate a PRD from nothing.\nconst j = $input.first().json;\nconst md = [\n  '# PRD Genie - No PRD Generated',\n  '',\n  '**Test ID:** ' + (j.test_id || 'unknown'),\n  '**Input assessment:** ' + j.input_assessment,\n  '',\n  'No requirements could be extracted from this input, so no PRD was generated.',\n  'Generating one would require inventing content that was never stated.',\n  '',\n  '## What is missing',\n  ...(j.gaps.missing_information || []).map(m => '- ' + m),\n  '',\n  '## Topics not discussed',\n  ...(j.gaps.not_discussed || []).map(m => '- ' + m),\n  '',\n  '_See clarification-questions.md for the questions to take back to stakeholders._',\n].join('\\n');\nreturn [{ json: { ...j, prd_markdown: md, halted_at_sufficiency_gate: true } }];"
+      },
+      "id": "fbcd8e2f-1766-4200-af94-1d2cc549d35b",
+      "name": "Halt - Insufficient Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=ROLE: You are a product analyst who turns gaps in a requirements discussion into specific questions for the people who can answer them.\n\nINPUT: The ambiguous items, contradictions, not-discussed topics and missing information identified by the Requirement Extractor.\n\nOUTPUT: Markdown:\n## Blocking Questions\n(answers needed before development can start)\n1. **[Topic]** - <question> *(Ask: <role or name, or \"unassigned\">)*\n   - Why this matters: <one sentence>\n   - What was said: \"<verbatim quote from the extraction>\"\n\n## Clarifying Questions\n(needed for a complete PRD, not blocking)\n\n## Unresolved Conflicts\n(both positions, with who holds each)\n\nRULES:\n1) Ask questions. Never answer them. \"What page load time is acceptable?\" is correct. \"Should we target under 3 seconds?\" is not - a suggested answer becomes a requirement the moment a busy stakeholder says \"sure\".\n2) Every question must trace to a specific gap in the input, quoted. Do not generate questions from a general checklist of what PRDs usually contain.\n3) Address each question to whoever is best placed to answer, based only on roles present in the input. If nobody suitable is named, write \"unassigned\".\n4) For contradictions, state both positions with their speakers and ask for a decision. Do not recommend which should win.\n5) Blocking vs clarifying: blocking means development cannot responsibly start without it. Be honest - a long blocking list that is mostly nice-to-know reads as noise.\n\nGAPS FROM EXTRACTION:\n{{ JSON.stringify($json.gaps) }}",
+        "messages": {}
+      },
+      "id": "8ba646d5-8e5e-41a9-97c1-ae1a85cd85b8",
+      "name": "Agent 4 - Gap Analyzer",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1380,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "648197f9-a482-496c-a1d5-f26788dff87c",
+              "name": "gap_markdown",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a3e78060-b66c-406a-bee8-2e8183cae8e9",
+      "name": "Capture Gap Questions",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1600,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 2,
+        "options": {}
+      },
+      "id": "87abc82a-076a-461c-ba42-bd5075845235",
+      "name": "Merge Outputs",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        2280,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Reach back to the source nodes for identity and metrics rather than relying on\n// them surviving the trip through the LLM chain nodes - chainLlm returns only\n// {text}, so anything not explicitly re-attached is dropped.\n// Current loop item, not the pre-loop batch — otherwise every file is labelled #1.\nconst src  = $('Combine All Sources').first().json;\nconst meta = $('Parse + Validate Extraction').first().json;\n\nconst items = $input.all().map(i => i.json);\nconst pick = (k) => {\n  for (const i of items) {\n    const v = i[k];\n    if (typeof v === 'string' && v.trim()) return v;\n  }\n  return '';\n};\n\n// Filesystem-safe. A fallback containing '/' would be read by n8n as a path\n// separator and silently split the filename.\nconst testId = String(src.test_id ?? 'unknown').replace(/[^A-Za-z0-9._-]/g, '_');\n\nreturn [{\n  json: {\n    test_id: testId,\n    source_file: src.source_file ?? testId,\n    input_assessment: meta.input_assessment ?? 'UNKNOWN',\n    stated_count: meta.stated_count ?? 0,\n    ambiguous_count: meta.ambiguous_count ?? 0,\n    contradiction_count: meta.contradiction_count ?? 0,\n    unsupported_items_dropped: meta.unsupported_items_dropped ?? 0,\n    halted_at_sufficiency_gate: items.some(i => i.halted_at_sufficiency_gate === true),\n    prd_markdown: pick('prd_markdown'),\n    stories_markdown: pick('stories_markdown'),\n    gap_markdown: pick('gap_markdown'),\n  }\n}];"
+      },
+      "id": "ab4c821f-2f97-4cb3-8984-fb79bb178db0",
+      "name": "Assemble Submission Outputs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2500,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "temperature": 0,
+          "responseFormat": "json_object"
+        }
+      },
+      "id": "5f331102-ff18-4b48-aa88-6c82f553ad34",
+      "name": "OpenAI gpt-4o-mini (extract)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "1b4dcbe6-8dee-42ef-8dc0-9478e4a06539",
+      "name": "OpenAI gpt-4o (PRD)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1380,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "60339c93-f032-4dd9-9b98-0a3537ea94da",
+      "name": "OpenAI gpt-4o (stories)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1700,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "99670f45-184a-4ac3-8d35-facb62176f88",
+      "name": "OpenAI gpt-4o-mini (gaps)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1380,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "public": false,
+        "options": {
+          "responseMode": "lastNode",
+          "title": "PRD Genie",
+          "subtitle": "Reads meeting files from your Google Drive folder.",
+          "initialMessages": "Send anything to ingest every file in the Drive folder.\nOr type part of a filename to process just those — e.g. \"stakeholder\".\nType \"list\" to see what's in the folder without generating anything."
+        }
+      },
+      "id": "a9ceec7c-40b2-4eef-aa5a-d813d496a583",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1180,
+        380
+      ],
+      "webhookId": "12c5d9ea-c5ee-43d3-b562-914fc0afe9af"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Chat is the PRIMARY input: it defines the scope of the PRD. Supporting\n// documents in Drive may only ADD DETAIL to what the chat raises — they cannot\n// introduce requirements of their own. With no chat requirements there is no\n// scope, so the run halts rather than building a PRD from documents alone.\nconst raw = String($input.first().json.chatInput ?? '').trim();\nconst lower = raw.toLowerCase();\n\n// Bare utility commands are not requirements.\nconst isCommand = /^(list|ls|what files|show files|all|go|run|ingest)$/.test(lower);\nconst has_requirements = raw.length > 0 && !isCommand;\n\n// Optional \"T1: ...\" prefix tags the run in traces without changing behaviour.\nconst m = raw.match(/^\\s*(T\\d{1,2})\\s*[:.\\-]\\s*([\\s\\S]+)$/i);\n\nreturn [{ json: {\n  has_requirements,\n  list_only: /^(list|ls|what files|show files)$/.test(lower),\n  primary_text: has_requirements ? (m ? m[2].trim() : raw) : '',\n  test_id: (m ? m[1].toUpperCase() : (has_requirements ? 'chat' : 'none')),\n  sessionId: $input.first().json.sessionId ?? null,\n} }];"
+      },
+      "id": "067c3c1f-9c40-44f7-91ec-652fdabc071e",
+      "name": "Read Chat Command",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -960,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Keep only readable text files as SUPPORTING documents. No filename filtering:\n// under the primary/supporting design every document in the folder is available\n// as detail for the chat's requirements — the chat, not a filter, sets scope.\nconst TEXTY = /^(text\\/plain|text\\/markdown|application\\/vnd\\.google-apps\\.document)$/;\nconst files = $input.all().map(i => i.json).filter(f => TEXTY.test(String(f.mimeType || '')));\nreturn files.map(f => ({ json: f }));"
+      },
+      "id": "3f393c97-7df1-4150-b50c-e1926f9bf2a1",
+      "name": "Keep Supporting Docs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -740,
+        380
+      ],
+      "notes": "Filters to .txt / .md / Google Docs, then applies the optional filename filter typed in chat."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build ONE document with the chat request as PRIMARY INPUT and each Drive file\n// as a SUPPORTING DOCUMENT. The extractor scopes the PRD to the PRIMARY block and\n// uses SUPPORTING blocks only to add detail to what the chat raised.\nconst cmd = $('Read Chat Command').first().json;\nconst primary = String(cmd.primary_text || '').trim();\n\n// Supporting docs (may be zero). $input carries the Binary-to-Text output.\nconst meta = (() => { try { return $('Keep Supporting Docs').all(); } catch (e) { return []; } })();\nconst docs = [];\n$input.all().forEach((item, i) => {\n  const j = item.json ?? {};\n  const name = meta[i]?.json?.name ?? `document-${i + 1}`;\n  const text = String(j.data ?? j.text ?? j.content ?? '').trim();\n  if (text) docs.push({ name, text });\n});\n\nconst blocks = [`=== PRIMARY INPUT (chat request — defines PRD scope) ===\\n${primary}`];\ndocs.forEach(d => blocks.push(`=== SUPPORTING DOCUMENT: ${d.name} (detail only, cannot add scope) ===\\n${d.text}`));\n\nreturn [{ json: {\n  test_id: cmd.test_id || 'chat',\n  source_file: ['chat request', ...docs.map(d => d.name)].join(', '),\n  source_count: 1 + docs.length,\n  source_names: ['chat request', ...docs.map(d => d.name)],\n  supporting_count: docs.length,\n  input_text: blocks.join('\\n\\n'),\n}}];"
+      },
+      "id": "b64b4465-f0ec-4770-893a-69b6a4d2b6d5",
+      "name": "Combine All Sources",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        380
+      ],
+      "notes": "Emits ONE item containing every source, delimited by === SOURCE: <name> === headers."
+    },
+    {
+      "parameters": {
+        "jsCode": "// One PRD, in three sections.\nconst passthru = $input.all().map(i => i.json).find(j => j && j.output && j.files_ingested === 0);\nif (passthru) return [{ json: passthru }];\n\nconst r = $input.first().json;\nconst src = $('Combine All Sources').first().json;\n\n// Push agent headings down one level so the three section headings stay outermost.\nconst demote = (md) => String(md || '').replace(/^(#{1,5}) /gm, '$1# ');\nconst none = '_Not generated — the sources did not contain enough stated requirements._';\n\nconst sources = (src.source_names || []).map(n => `\\`${n}\\``).join(' · ') || '_none_';\n\nconst header = r.halted_at_sufficiency_gate\n  ? '> **No PRD generated.** No stated requirements were found across the sources, so the PRD Generator was never invoked.'\n  : `> **${r.stated_count}** stated requirement(s) · **${r.ambiguous_count}** ambiguous · ` +\n    `**${r.contradiction_count}** contradiction(s)` +\n    (r.unsupported_items_dropped ? ` · **${r.unsupported_items_dropped}** unsupported dropped` : '');\n\nconst output = [\n  '# PRD Genie',\n  '',\n  `Synthesised from **${src.source_count || 0}** source(s): ${sources}`,\n  '',\n  header,\n  '', '---', '',\n  '# 1. Product Requirements Document', '',\n  r.halted_at_sufficiency_gate ? none : demote(r.prd_markdown || none),\n  '', '---', '',\n  '# 2. Epics and User Stories', '',\n  r.halted_at_sufficiency_gate ? none : demote(r.stories_markdown || none),\n  '', '---', '',\n  '# 3. Clarification Questions', '',\n  demote(r.gap_markdown || none),\n].join('\\n');\n\nreturn [{ json: { output, sources_combined: src.source_count || 0,\n                  halted: !!r.halted_at_sufficiency_gate } }];"
+      },
+      "id": "86f3f69f-1023-4377-8f7d-84d6f9300c6b",
+      "name": "Format Chat Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1660,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// No requirements in the chat -> no scope -> no PRD (by design).\nconst j = $input.first().json;\nif (j.list_only) {\n  const files = (() => { try { return $('Keep Supporting Docs').all().map(i=>i.json.name); } catch(e){ return []; } })();\n  const list = files.length ? files.map(f=>`- \\`${f}\\``).join('\\n') : '_No supporting documents found._';\n  return [{ json: { output: ['# Supporting documents in Drive','',list,'','Describe your requirements in the chat and I will build a PRD from them, using these documents only to add detail.'].join('\\n'), files_ingested: 0, prds_generated: 0 } }];\n}\nconst output = [\n  '# No requirements provided',\n  '',\n  'PRD Genie builds a PRD from the requirements you describe **in the chat**.',\n  'The documents in Drive are used only to add detail to what you specify —',\n  'they are never used on their own.',\n  '',\n  'Type your requirements (or a request like *\"a reporting dashboard that filters by date and exports to PDF\"*) to begin.',\n].join('\\n');\nreturn [{ json: { output, files_ingested: 0, prds_generated: 0 } }];"
+      },
+      "id": "7d2509db-e752-4b39-afef-61abf32886c3",
+      "name": "Answer Without Running",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build a Langfuse ingestion batch for ONE file's run.\n// This node sits inside the loop, so every reference below resolves to the\n// current iteration - not the first file. That distinction matters: reading\n// $('Combine All Sources').first() here would tag every trace with file #1.\n\nconst asm  = $input.first().json;   // Assemble output + judge scores (via Parse Judge Score)\nconst cur  = $('Combine All Sources').first().json;                // current batch item\nconst meta = $('Parse + Validate Extraction').first().json;    // this file's extraction\nconst cmd  = $('Read Chat Command').first().json;              // chat session\n\nconst uid = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, ch => {\n  const r = Math.random() * 16 | 0;\n  return (ch === 'x' ? r : (r & 0x3 | 0x8)).toString(16);\n});\n\nconst t0 = Date.now();\nconst iso = (ms = 0) => new Date(t0 + ms).toISOString();\nconst traceId = uid();\nconst batch = [];\nconst push = (type, body) => batch.push({ id: uid(), type, timestamp: iso(), body });\n\n// Estimate only - see langfuse-integration.md before using for cost analysis.\nconst est = (s) => Math.ceil(String(typeof s === 'string' ? s : JSON.stringify(s ?? '')).length / 4);\n\nconst sourceText = String(cur.input_text ?? '');\nconst sourceFile = asm.source_file ?? cur.source_file ?? asm.test_id ?? 'unknown';\n\npush('trace-create', {\n  id: traceId,\n  name: (asm.test_id && !['chat','none','unknown','combined'].includes(asm.test_id))\n          ? `PRD Genie — ${asm.test_id}` : 'PRD Genie',\n  // One sessionId per chat message groups every file of a batch into one session.\n  sessionId: cmd.sessionId ?? undefined,\n  input: sourceText,\n  output: asm.prd_markdown,\n  tags: ['drive-ingest', sourceFile, asm.input_assessment,\n         asm.halted_at_sufficiency_gate ? 'halted' : 'completed'].filter(Boolean),\n  metadata: {\n    source_file: sourceFile,\n    test_id: asm.test_id,\n    stated_count: asm.stated_count,\n    ambiguous_count: asm.ambiguous_count,\n    contradiction_count: asm.contradiction_count,\n    unsupported_items_dropped: asm.unsupported_items_dropped,\n    halted_at_sufficiency_gate: asm.halted_at_sufficiency_gate,\n    // --- judge audit: makes the completeness/hallucination scores explainable ---\n    gt_count: asm.gt_count,\n    extracted_count: asm.extracted_count,\n    hallucinated_items: asm.hallucinated_items,\n    missed_items: asm.missed_items,\n    judge_summary: asm.judge_summary,\n  },\n});\n\nconst generation = (name, model, input, output, offset) => {\n  push('generation-create', {\n    id: uid(), traceId, name, model,\n    startTime: iso(offset), endTime: iso(offset + 1000),\n    modelParameters: { temperature: 0 },\n    input, output,\n    usageDetails: { input: est(input), output: est(output), total: est(input) + est(output) },\n  });\n};\n\ngeneration('Agent 1 · Requirement Extractor', 'gpt-4o-mini', sourceText, meta.extraction, 0);\nif (!asm.halted_at_sufficiency_gate) {\n  generation('Agent 2 · PRD Generator', 'gpt-4o', meta.extraction, asm.prd_markdown, 2000);\n  generation('Agent 3 · Story Breakdown', 'gpt-4o', asm.prd_markdown, asm.stories_markdown, 4000);\n}\ngeneration('Agent 4 · Gap Analyzer', 'gpt-4o-mini', meta.gaps, asm.gap_markdown, 2000);\n\npush('span-create', {\n  id: uid(), traceId, name: 'Guardrail · quote validation',\n  startTime: iso(1200), endTime: iso(1250),\n  level: (asm.unsupported_items_dropped > 0) ? 'WARNING' : 'DEFAULT',\n  statusMessage: `${asm.unsupported_items_dropped ?? 0} unsupported item(s) dropped`,\n  input: { stated_items_kept: meta.stated_count ?? 0 },\n  output: { dropped: meta.dropped_items ?? [] },\n});\n\npush('span-create', {\n  id: uid(), traceId, name: 'Guardrail · sufficiency gate',\n  startTime: iso(1300), endTime: iso(1350),\n  level: asm.halted_at_sufficiency_gate ? 'WARNING' : 'DEFAULT',\n  statusMessage: asm.halted_at_sufficiency_gate\n    ? 'HALTED — no stated requirements; PRD Generator not invoked'\n    : `PASSED — ${asm.stated_count} stated requirement(s)`,\n  input: { stated_count: asm.stated_count ?? 0 },\n  output: { proceeded: !asm.halted_at_sufficiency_gate },\n});\n\n// --- evaluation scores, attached to this same trace -------------------------\n// 0-1 numerics so Langfuse can filter and chart them. Reported as a PAIR:\n// completeness alone rewards loose extraction, hallucination rate alone\n// rewards extracting nothing. Only together do they mean anything.\nconst score = (name, value, comment) => {\n  if (value === null || value === undefined || Number.isNaN(Number(value))) return;\n  push('score-create', {\n    id: uid(), traceId, name,\n    value: Number(value), dataType: 'NUMERIC',\n    comment: comment || undefined,\n  });\n};\n\nscore('extraction_completeness', asm.completeness, asm.judge_note);   // higher is better\nscore('hallucination_rate',      asm.hallucination_rate, asm.judge_note); // lower is better\nscore('format_compliance',       asm.format_compliance,\n      (asm.format_failed_checks && asm.format_failed_checks.length)\n        ? 'failed: ' + asm.format_failed_checks.join(', ') : 'all 13 checks pass'); // higher is better\n\nreturn [{ json: { batch } }];"
+      },
+      "id": "76fd1000-5199-4d12-b60b-ba758b974307",
+      "name": "Build Langfuse Batch",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        460
+      ],
+      "notes": "Runs inside the loop — one Langfuse trace per ingested file."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us.cloud.langfuse.com/api/public/ingestion",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ batch: $json.batch }) }}",
+        "options": {}
+      },
+      "id": "0fa2f57d-f1e2-45f0-82dc-16c1f5ee41ad",
+      "name": "Send to Langfuse",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1330,
+        460
+      ],
+      "onError": "continueRegularOutput",
+      "retryOnFail": false,
+      "notes": "US region. Basic auth: user = Langfuse public key, password = secret key. Keys live in the credential, never in this file. Set to continue on error so a Langfuse outage cannot break the chat reply."
+    },
+    {
+      "parameters": {
+        "jsCode": "// HTTP node replaced the item with Langfuse's response. Restore the run payload,\n// taken from Score Format Compliance so all three eval scores survive.\nreturn [{ json: $('Score Format Compliance').first().json }];"
+      },
+      "id": "e95a0aba-f0ad-496a-ae84-75fcbf758407",
+      "name": "Restore Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {
+          "temperature": 0,
+          "responseFormat": "json_object"
+        }
+      },
+      "id": "e425d115-1b95-431e-a9a0-68d53b5722fb",
+      "name": "OpenAI gpt-4o (judge)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1180,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=ROLE: You are an evaluation judge for PRD Genie, a system whose SCOPE is set by a PRIMARY user request. Supporting documents may only add detail to requirements the PRIMARY request raised — they never widen scope. You measure two things: how completely the extraction captured the PRIMARY request's requirements (completeness), and whether the extraction asserts anything unsupported by any source (hallucination).\n\nYou receive THREE inputs:\n  PRIMARY REQUEST — what the user actually asked for. This ALONE defines scope.\n  FULL SOURCE — the primary request plus supporting documents (for grounding only).\n  EXTRACTION — the JSON the extractor produced.\n\nMETHOD — do the steps in order.\n\nSTEP 1 — Build ground truth from the PRIMARY REQUEST ALONE, before reading the extraction. List every distinct requirement, constraint, persona, goal, or acceptance criterion the PRIMARY REQUEST states or directly implies. Assign IDs GT-01, GT-02, ...\nCRITICAL: Do NOT add ground-truth items that appear only in the supporting documents. The supporting documents are NOT part of scope. A dashboard requirement that lives only in a supporting file and was never asked for in the PRIMARY REQUEST is OUT OF SCOPE and must NOT be a ground-truth item. Counting it would penalise the system for correctly ignoring it.\nAlso do NOT include: topics the PRIMARY REQUEST left undecided (\"TBD\"); your own inferences about what the product probably needs.\nIf the PRIMARY REQUEST states no concrete requirement (it is vague or empty), ground truth is empty — see STEP 3.\n\nSTEP 2 — Match each ground-truth item against the EXTRACTION:\n  FULL (1.0)     - captured with its specific detail intact\n  PARTIAL (0.5)  - captured but a stated detail was lost, generalised, or several items collapsed into one\n  MISCLASS (0.5) - present but in the wrong bucket (e.g. a stated requirement filed as ambiguous)\n  MISSING (0.0)  - absent entirely\nDetail the extraction pulled from a SUPPORTING DOCUMENT to enrich an in-scope requirement is a BONUS: it may raise a PARTIAL to FULL, but never lower a score and is never itself a missing item.\n\nSTEP 3 — completeness = sum(scores) / count(ground truth), as a decimal 0.000-1.000. If ground truth is empty AND the extraction produced no stated requirements, completeness = 1.000 (correctly captured nothing in scope). If ground truth is empty but the extraction invented requirements, completeness = 0.000.\n\nHALLUCINATION — separate judgement. An extracted item is a hallucination ONLY if it is supported by NEITHER the PRIMARY REQUEST NOR any supporting document in the FULL SOURCE. Enrichment drawn from a supporting document about an in-scope requirement is SUPPORTED — it is not a hallucination. hallucination_rate = count(unsupported items) / count(all extracted items).\n\nRULES:\n1) Ground truth comes from the PRIMARY REQUEST only. Hallucination grounding uses the FULL SOURCE. Keep the two separate.\n2) Wording may differ; meaning preserved is what matters.\n3) Numbers, versions and identifiers must survive exactly; a rounded figure is PARTIAL.\n4) Collapsing several stated items into one is PARTIAL.\n\nOUTPUT valid JSON only, no prose, no code fences:\n{\n  \"ground_truth\": [{\"id\":\"GT-01\",\"item\":\"...\",\"quote\":\"<verbatim from PRIMARY REQUEST>\"}],\n  \"matches\": [{\"id\":\"GT-01\",\"verdict\":\"FULL|PARTIAL|MISCLASS|MISSING\",\"score\":1.0,\"note\":\"...\"}],\n  \"completeness\": 0.0,\n  \"ground_truth_count\": 0,\n  \"points_awarded\": 0.0,\n  \"missed_items\": [],\n  \"extracted_item_count\": 0,\n  \"hallucinations_noted\": [\"<extracted items unsupported by primary OR supporting sources>\"],\n  \"hallucination_rate\": 0.0,\n  \"summary\": \"<two sentences>\"\n}\n\nPRIMARY REQUEST:\n{{ $('Read Chat Command').first().json.primary_text }}\n\nFULL SOURCE (primary + supporting, for hallucination grounding only):\n{{ $('Combine All Sources').first().json.input_text }}\n\nEXTRACTION:\n{{ JSON.stringify($('Parse + Validate Extraction').first().json.extraction) }}",
+        "messages": {}
+      },
+      "id": "8f54a49b-d307-46b6-8997-65fd96b71533",
+      "name": "Agent 5 - Completeness Judge",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1180,
+        560
+      ],
+      "onError": "continueRegularOutput",
+      "notes": "Evaluation judge. Adds ~$0.03-0.04 per run on gpt-4o. Set to continue on error so a judge failure never breaks the PRD output."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the judge's verdict and carry it alongside the run payload.\n// Failing to parse must never break the run: scores are observability, not output.\nconst asm = $('Assemble Submission Outputs').first().json;\n\nlet j = null;\ntry {\n  let t = $input.first().json;\n  t = t.text ?? t.output ?? t.response ?? t;\n  if (typeof t === 'string') t = t.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();\n  j = typeof t === 'string' ? JSON.parse(t) : t;\n} catch (e) {\n  j = null;\n}\n\nconst clamp01 = (n) => Math.max(0, Math.min(1, Number(n)));\n\nlet completeness = null, hallucination_rate = null, judge_note = 'judge unavailable';\nif (j && typeof j === 'object') {\n  const gtCount = Number(j.ground_truth_count ?? (j.ground_truth || []).length) || 0;\n  const points  = Number(j.points_awarded ?? (j.matches || []).reduce((s, m) => s + (Number(m.score) || 0), 0)) || 0;\n  completeness = gtCount > 0 ? clamp01(points / gtCount)\n                             : clamp01(j.completeness ?? 1);\n\n  // Prefer the judge's own hallucination_rate (scoped: unsupported by primary OR supporting).\n  const halls = (j.hallucinations_noted || []).length;\n  const extracted = Number(j.extracted_item_count) ||\n    ((asm.stated_count || 0) + (asm.ambiguous_count || 0) + (asm.contradiction_count || 0));\n  hallucination_rate = (j.hallucination_rate !== undefined && j.hallucination_rate !== null && !Number.isNaN(Number(j.hallucination_rate)))\n    ? clamp01(j.hallucination_rate)\n    : (extracted > 0 ? clamp01(halls / extracted) : 0);\n\n  judge_note = `${points}/${gtCount} ground truth · ${halls} unsupported item(s)` +\n               (j.missed_items?.length ? ` · missed ${j.missed_items.join(', ')}` : '');\n}\n\n// Audit trail: expose exactly what the judge flagged so the score is explainable.\n  const hallucinated_items = (j && j.hallucinations_noted) ? j.hallucinations_noted : [];\n  const missed_items = (j && j.missed_items) ? j.missed_items : [];\n  const gt_count = (j && (j.ground_truth_count ?? (j.ground_truth || []).length)) || 0;\n  const extracted_count = (j && j.extracted_item_count) || null;\n  const judge_summary = (j && j.summary) ? j.summary : '';\n  return [{ json: { ...asm, completeness, hallucination_rate, judge_note,\n    hallucinated_items, missed_items, gt_count, extracted_count, judge_summary,\n    judge_raw: j } }];"
+      },
+      "id": "fda7c21b-624e-4aa3-93ce-6284b3eba6c9",
+      "name": "Parse Judge Score",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1330,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format compliance (0-1), deterministic. Ported from scripts/score_format_compliance.py\n// and verified identical on the same PRDs. Structural only: an abstention is compliant,\n// so a \"Not discussed in this meeting.\" section never lowers the score.\nconst asm = $input.first().json;\nconst md  = String(asm.prd_markdown || '');\n\nfunction scoreFormat(md) {\n  const ABSTAIN = \"Not discussed in this meeting.\";\n  const SECTIONS = [\"Product Overview\",\"Goals and Objectives\",\"User Personas\",\n    \"Feature Requirements\",\"Acceptance Criteria\",\"Out of Scope\",\n    \"Dependencies\",\"Assumptions\",\"Open Questions\",\"Timeline\"];\n  const headings = Array.from(md.matchAll(/^#{1,3}\\s+.*$/gm)).map(m =>\n    m[0].replace(/^#+\\s*\\d*\\.?\\s*/, \"\").trim());\n  const hl = headings.join(\" \\n \").toLowerCase();\n  const esc = s => s.replace(/[.*+?^${}()|[\\]\\\\]/g, \"\\\\$&\");\n  const hasCols = (section, cols) => {\n    const m = md.match(new RegExp(esc(section) + \"([\\\\s\\\\S]*?)(?=\\\\n#{1,2}\\\\s|$)\"));\n    const body = m ? m[1] : \"\";\n    return body.split(\"\\n\").some(line =>\n      line.includes(\"|\") && cols.every(c => line.toLowerCase().includes(c.toLowerCase())));\n  };\n  const ck = {};\n  ck.C1  = [3, SECTIONS.filter(s => hl.includes(s.toLowerCase())).length === 10];\n  const idx = SECTIONS.filter(s => hl.includes(s.toLowerCase())).map(s => hl.indexOf(s.toLowerCase()));\n  ck.C2  = [1, JSON.stringify(idx) === JSON.stringify([...idx].sort((a,b)=>a-b)) && idx.length === 10];\n  ck.C3  = [1, hl.includes(\"functional\") && hl.includes(\"non-functional\")];\n  ck.C4  = [1, hasCols(\"Feature Requirements\", [\"Requirement\",\"Priority\",\"Source\"])];\n  ck.C5  = [1, hasCols(\"Feature Requirements\", [\"Requirement\",\"Category\",\"Target\"])];\n  ck.C6  = [1, hasCols(\"Dependencies\", [\"Owner\",\"Status\",\"Risk\"])];\n  ck.C7  = [1, hasCols(\"Timeline\", [\"Milestone\",\"Target\"]) || md.includes(ABSTAIN)];\n  ck.C8  = [1, /\\bFR-\\d+\\b/.test(md) || md.includes(ABSTAIN)];\n  ck.C9  = [1, !/Priority[:|]\\s*(High|Low|Critical|P\\d)/i.test(md)];\n  const frRows = md.split(\"\\n\").filter(l => /\\bFR-\\d+\\b/.test(l));\n  ck.C10 = [1, frRows.length ? frRows.every(r => r.split(\"|\").filter(x=>x.trim()).length >= 4) : true];\n  ck.C11 = [1, !/\\[\\s*\\]|<[^>]*>|FR-001\\s*\\|\\s*\\|/.test(md)];\n  ck.C12 = [1, !hl.includes(\"not discussed\")];\n  const ALLOWED = SECTIONS.map(s=>s.toLowerCase()).concat([\"functional\",\"product requirements document\"]);\n  ck.C13 = [1, headings.every(x => { const xl=x.toLowerCase();\n    return ALLOWED.some(a => xl.includes(a)) || x.length < 3; })];\n\n  let earned=0, total=0; const failed=[];\n  for (const [k,[wgt,ok]] of Object.entries(ck)) { total+=wgt; if(ok) earned+=wgt; else failed.push(k); }\n  return { score: Math.round(earned/total*1000)/1000, points: earned, max: total, failed };\n}\n\n// An empty/halted run has no PRD to grade: report null rather than a misleading 0 or 1.\nconst fc = asm.halted_at_sufficiency_gate ? { score: null, failed: [] } : scoreFormat(md);\n\nreturn [{ json: { ...asm,\n  format_compliance: fc.score,\n  format_failed_checks: fc.failed } }];"
+      },
+      "id": "51e9c4f6-3797-4265-9ba7-4ee0757d9a48",
+      "name": "Score Format Compliance",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce1d1637-6d30-42db-adcd-8994323b162c",
+              "leftValue": "={{ $json.has_requirements }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e425776d-662e-4460-847a-db233771dcd6",
+      "name": "Has Chat Requirements?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -720,
+        380
+      ],
+      "notes": "TRUE = the chat carries requirements; read supporting docs and build a scoped PRD. FALSE = no scope; answer without generating."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Collapse the two mutually-exclusive branches (generated vs halted) into one\n// item. Only one upstream branch fires per run, so this executes exactly once.\nreturn [{ json: $input.first().json }];"
+      },
+      "id": "ae56a998-99d4-466b-a282-740bdc11bb05",
+      "name": "Main Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        360
+      ]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read Chat Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Chat Command": {
+      "main": [
+        [
+          {
+            "node": "Has Chat Requirements?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Files in Drive Folder": {
+      "main": [
+        [
+          {
+            "node": "Keep Supporting Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download File": {
+      "main": [
+        [
+          {
+            "node": "Binary to Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Binary to Text": {
+      "main": [
+        [
+          {
+            "node": "Combine All Sources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 1 - Requirement Extractor": {
+      "main": [
+        [
+          {
+            "node": "Parse + Validate Extraction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse + Validate Extraction": {
+      "main": [
+        [
+          {
+            "node": "Sufficiency Gate",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Agent 4 - Gap Analyzer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sufficiency Gate": {
+      "main": [
+        [
+          {
+            "node": "Agent 2 - PRD Generator",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Halt - Insufficient Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 2 - PRD Generator": {
+      "main": [
+        [
+          {
+            "node": "Capture PRD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture PRD": {
+      "main": [
+        [
+          {
+            "node": "Agent 3 - Story Breakdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 3 - Story Breakdown": {
+      "main": [
+        [
+          {
+            "node": "Capture Stories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture Stories": {
+      "main": [
+        [
+          {
+            "node": "Main Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Halt - Insufficient Input": {
+      "main": [
+        [
+          {
+            "node": "Main Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 4 - Gap Analyzer": {
+      "main": [
+        [
+          {
+            "node": "Capture Gap Questions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Capture Gap Questions": {
+      "main": [
+        [
+          {
+            "node": "Merge Outputs",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Outputs": {
+      "main": [
+        [
+          {
+            "node": "Assemble Submission Outputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Submission Outputs": {
+      "main": [
+        [
+          {
+            "node": "Agent 5 - Completeness Judge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer Without Running": {
+      "main": [
+        [
+          {
+            "node": "Format Chat Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI gpt-4o (PRD)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 2 - PRD Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI gpt-4o (stories)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 3 - Story Breakdown",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI gpt-4o-mini (gaps)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 4 - Gap Analyzer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Langfuse Batch": {
+      "main": [
+        [
+          {
+            "node": "Send to Langfuse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to Langfuse": {
+      "main": [
+        [
+          {
+            "node": "Restore Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restore Payload": {
+      "main": [
+        [
+          {
+            "node": "Format Chat Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine All Sources": {
+      "main": [
+        [
+          {
+            "node": "Agent 1 - Requirement Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 5 - Completeness Judge": {
+      "main": [
+        [
+          {
+            "node": "Parse Judge Score",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Judge Score": {
+      "main": [
+        [
+          {
+            "node": "Score Format Compliance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI gpt-4o (judge)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 5 - Completeness Judge",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score Format Compliance": {
+      "main": [
+        [
+          {
+            "node": "Build Langfuse Batch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Chat Requirements?": {
+      "main": [
+        [
+          {
+            "node": "List Files in Drive Folder",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Answer Without Running",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep Supporting Docs": {
+      "main": [
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI gpt-4o-mini (extract)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 1 - Requirement Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main Result": {
+      "main": [
+        [
+          {
+            "node": "Merge Outputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "instanceId": "prd-genie-capstone"
+  },
+  "tags": []
+}

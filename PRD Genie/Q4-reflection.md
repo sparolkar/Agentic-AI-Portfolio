@@ -2,8 +2,6 @@
 
 **Shailendra Parolkar · PRD Genie**
 
-> Drafted from the actual trace findings. Personalise the voice before submitting; the facts are all from the run data.
-
 ## 1. What the traces revealed
 
 Observability did not just confirm the system worked — it twice showed me that something I *believed* was wrong, and once that my *measurement* was wrong.

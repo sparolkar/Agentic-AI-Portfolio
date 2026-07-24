@@ -15,7 +15,7 @@ Two things to preserve if you edit these:
 
 **Model:** gpt-4o-mini · **Temperature:** 0 · **Input:** the combined source document (PRIMARY chat + SUPPORTING docs)
 
-> **Model note — gpt-4o-mini.** The extractor runs on gpt-4o-mini. Earlier testing on a large undifferentiated multi-document dump showed mini under-extracting, which pushed toward gpt-4o; the chat-primary redesign changed that calculus by giving the extractor a focused scope (the chat request plus targeted enrichment) rather than seven concatenated documents. With the smaller, scoped input mini is the pragmatic choice, and it keeps the mixed-model cost advantage. Whether mini's recall is sufficient is now a question the scope-aligned completeness metric answers directly.
+> **Model note — gpt-4o-mini.** The extractor runs on gpt-4o-mini. Earlier testing on a large undifferentiated multi-document dump showed mini under-extracting, which pushed toward gpt-4o; the chat-primary redesign changed that cost-versus-quality trade-off by giving the extractor a focused scope (the chat request plus targeted enrichment) rather than seven concatenated documents. With the smaller, scoped input mini is the pragmatic choice, and it keeps the mixed-model cost advantage. Whether mini's recall is sufficient is now a question the scope-aligned completeness metric answers directly.
 
 ```
 ROLE: You are a requirements analyst. You read meeting transcripts, product
